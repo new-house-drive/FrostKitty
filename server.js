@@ -1,21 +1,16 @@
-//* 1. Fetch the XML data from the the link.
-// import fetch from "node-fetch"
 
-// const response = await fetch('https://data.icecat.biz/export/freexml/refs/FeaturesList.xml.gz')
+import fetch from "node-fetch";
 
-//* 2. Decompress the .gz format
-// zlib?? NOT REQUIRED FOR JSON and pure xml
-//* 3. Transform .XML -> JS object.
+const shopname = "openicecat-live"
+const icecat_id = "56195846"
+const lang = "EN"
+let url = `https://live.icecat.biz/api?` +
+        `shopname=${shopname}`+
+        `&lang=${lang}`+
+        `&icecat_id=${icecat_id}`+
+        `&content=`
 
+const response = await fetch(url)
+const data = await response.json()
 
-// var convert = require('xml-js');
-// var xml =
-// '<?xml version="1.0" encoding="utf-8"?>' +
-// '<note importance="high" logged="true">' +
-// '    <title>Happy</title>' +
-// '    <todo>Work</todo>' +
-// '    <todo>Play</todo>' +
-// '</note>';
-// var result1 = convert.xml2json(xml, {compact: true, spaces: 4});
-// var result2 = convert.xml2json(xml, {compact: false, spaces: 4});
-// console.log(result1, '\n', result2);
+console.log(data["data"])
