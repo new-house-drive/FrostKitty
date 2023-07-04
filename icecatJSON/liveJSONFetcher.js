@@ -10,6 +10,7 @@ function _jsonCreateLink(shopname, icecat_id, lang) {
     `&lang=${lang}` +
     `&icecat_id=${icecat_id}` +
     `&content=`;
+  console.log("Your link is: " + url)
   return url;
 }
 
