@@ -1,24 +1,21 @@
-import fetch from "node-fetch";
+// User-level functions which understand the structure
+// of Icecat Live response structure
+//! use the response from jsonGetProductByID as input!
 
-function createJSONLink(shopname, icecat_id, lang) {
-  let liveJSON =
-    `https://live.icecat.biz/api?` +
-    `shopname=${shopname}` +
-    `&lang=${lang}` +
-    `&icecat_id=${icecat_id}` +
-    `&content=`;
-  return liveJSON;
-}
+function getRootKeysByProductData(productData) {
+  // for convenience, I skip the msg: OK if response is 200
+  if (productData.msg !== "OK") {
+    return "The product is not available";
+  }
+  productData = productData.data;
 
-async function getJSONProductData(shopname, icecat_id, lang) {
-  const JSONLink = createJSONLink(shopname, icecat_id, lang);
-  const response = await fetch(JSONLink);
-  const JSONData = await response.json();
+  // delete Dictionary and DemoAccount useless sections
+  const rootKeys = Object.keys(productData);
+  const usefulKeys = rootKeys.slice(1, -1);
 
-  return JSONData;
+  return usefulKeys;
 }
 
 export default {
-        createJSONLink,
-        getJSONProductData
-}
+  getRootKeysByProductData,
+};
