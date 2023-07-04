@@ -1,3 +1,7 @@
+import liveJSONFetcher from "./icecatJSON/liveJSONFetcher.js";
 import liveJSONHelper from "./icecatJSON/liveJSONHelper.js";
-const data = await liveJSONHelper.createJSONLink("openicecat-live", 56195846, "EN");
-console.log(data);
+
+const product = await liveJSONFetcher.jsonGetProductByID("openicecat-live", 56195846, "EN");
+const usefulKeys = liveJSONHelper.getRootKeysByProductData(product)
+
+console.log(usefulKeys)
