@@ -3,9 +3,16 @@ const board = document.querySelector('.board');
 const header = document.createElement('div')
 
 header.className = 'header'
-header.innerHTML = "Modified long way to go!"
-
-board.innerHTML = "Modified long way to go!"
 board.appendChild(header)
 
-console.log("why are you running?")
+const logo1 = document.createElement('div')
+const logo2 = document.createElement('div')
+
+logo1.innerHTML = "ZHOOOOOOOOOOOOOOOOOOOOOOOOOPA"
+logo2.innerHTML = "ZHOOOOOOOOOOOOOOOOOOOOOOOOOPA"
+
+logo1.className = 'logo-image'
+logo2.className = 'logo-image'
+
+header.appendChild(logo1)
+header.appendChild(logo2)
