@@ -1,18 +1,19 @@
 const board = document.querySelector('.board');
-
 const header = document.createElement('div')
 
 header.className = 'header'
 board.appendChild(header)
 
-const logo1 = document.createElement('div')
-const logo2 = document.createElement('div')
+const logo = document.createElement('img')
 
-logo1.innerHTML = "ZHOOOOOOOOOOOOOOOOOOOOOOOOOPA"
-logo2.innerHTML = "ZHOOOOOOOOOOOOOOOOOOOOOOOOOPA"
+logo.className = 'logo-image'
+logo.src = "kitty-logo.png"
+logo.alt = "FrostKitty"
 
-logo1.className = 'logo-image'
-logo2.className = 'logo-image'
+header.appendChild(logo)
 
-header.appendChild(logo1)
-header.appendChild(logo2)
+const logoTitle = document.createElement('div')
+logoTitle.className = 'logo-title'
+logoTitle.innerText = "frost\nkitty"
+
+header.appendChild(logoTitle)
