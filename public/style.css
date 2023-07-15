@@ -3,10 +3,11 @@ body {
 }
 
 .header {
-    background-color: rgb(210, 164, 253);
+    background-color: rgb(218, 183, 252);
     width: 100%;
     min-height: 80px;
     position: sticky;
+    border: 2px solid black;
 }
 
 .board {
@@ -19,4 +20,12 @@ body {
 
 .logo-image {
     float: left;
+    margin: 5px;
+}
+
+.logo-title {
+    float: left;
+    font-weight: 800;
+    font-size: xx-large;
+    color: rgb(12, 6, 42);
 }
