@@ -1,11 +1,13 @@
 import fetch from "node-fetch";
 
+const DOMAIN = `https://live.icecat.biz/api?` 
+
 // skeleton of creating a link by IcecatID
 //TODO: add options to use MPN & Brand or GTIN
 
 function _jsonCreateLink(shopname, icecat_id, lang) {
   let url =
-    `https://live.icecat.biz/api?` +
+    DOMAIN +
     `shopname=${shopname}` +
     `&lang=${lang}` +
     `&icecat_id=${icecat_id}` +
