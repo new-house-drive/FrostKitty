@@ -1,7 +1,12 @@
+body {
+    margin: 0%;
+}
+
 .header {
-    background-color: blueviolet;
+    background-color: rgb(210, 164, 253);
     width: 100%;
-    height: 10%;
+    min-height: 80px;
+    position: sticky;
 }
 
 .board {
@@ -10,4 +15,8 @@
 
 .board:active {
     background-color: aqua;
+}
+
+.logo-image {
+    float: left;
 }
