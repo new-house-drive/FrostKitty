@@ -13,7 +13,8 @@ const PORT = 3000
 app.listen(PORT, () => {console.log("Proceed to PORT: " + PORT)})
 
 app.get('/', (req, res) => {
-    res.sendFile("index.html", {root: __dirname})
+    res.sendFile("index.html", {root: __dirname + "/public"})
 })
+
 
 console.log(await liveJSONFetcher.jsonGetProductByID('valera-shop', "11771947", "EN"))
