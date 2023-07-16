@@ -10,14 +10,6 @@ body {
     border: 2px solid black;
 }
 
-.board {
-    background-color: chartreuse;
-}
-
-.board:active {
-    background-color: aqua;
-}
-
 .logo-image {
     float: left;
     margin: 5px;
