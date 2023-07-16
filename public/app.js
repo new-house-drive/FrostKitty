@@ -1,4 +1,8 @@
 const board = document.querySelector('.board');
+
+// Header - TOP navigation bar with 3 radio buttons, each
+// turning its own interface
+// Button XML, button JSON, button CSV, button Reference files
 const header = document.createElement('div')
 
 header.className = 'header'
@@ -17,3 +21,4 @@ logoTitle.className = 'logo-title'
 logoTitle.innerText = "frost\nkitty"
 
 header.appendChild(logoTitle)
+
