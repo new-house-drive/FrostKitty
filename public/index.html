@@ -4,49 +4,52 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FrostKitty</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <div class="board">
       <div class="header">
-        <img src="kitty-logo.png" alt="Frost Kitty" class="logo-image" />
+        <img src="./img/kitty-logo.png" alt="Frost Kitty" class="logo-image" />
         <label class="logo-title">frost<br />kitty</label>
         <button class="top-nav" id="view-XML">XML</button>
         <button class="top-nav" id="view-JSON">JSON</button>
-        <button class="top-nav" id="view-JSON">CSV</button>
+        <button class="top-nav" id="view-CSV">CSV</button>
       </div>
-      <div class="viewJSON">
-        <!-- shopname: input -->
-        <!-- app-key: input -->
-        <!-- brand: input -->
-        <!-- mpn: input -->
-        <!-- gtin: input -->
-        <!-- icecat ID: input -->
-        <div class="json-input-form">
-          <label for="shopname">Shopname</label>
-          <input type="text" id="shopname" name="shopname" />
+      <!-- shopname: input -->
+      <!-- app-key: input -->
+      <!-- brand: input -->
+      <!-- mpn: input -->
+      <!-- gtin: input -->
+      <!-- icecat ID: input -->
+      <div class="input-form">
+        <label for="shopname">Shopname</label>
+        <input type="text" id="input-shopname" name="shopname" />
 
-          <label for="app-key">App-key</label>
-          <input type="text" id="app-key" name="app-key" />
+        <label for="app-key">App-key</label>
+        <input type="text" id="input-app-key" name="app-key" />
 
-          <label for="brand">Brand</label>
-          <input type="text" id="brand" name="brand" />
+        <label for="brand">Brand</label>
+        <input type="text" id="input-brand" name="brand" />
 
-          <label for="mpn">MPN</label>
-          <input type="text" id="mpn" name="mpn" />
+        <label for="mpn">MPN</label>
+        <input type="text" id="input-mpn" name="mpn" />
 
-          <label for="icecat-id">Icecat ID</label>
-          <input type="text" id="icecat-id" name="icecat-id" />
+        <label for="icecat-id">Icecat ID</label>
+        <input type="text" id="input-icecat-id" name="icecat-id" />
 
-          <label for="shopname">GTIN</label>
-          <input type="text" id="gtin" name="gtin" />
-
-          <button>Get JSON</button>
-        </div>
+        <label for="shopname">GTIN</label>
+        <input type="text" id="input-gtin" name="gtin" />
       </div>
-      <div class="viewXML"></div>
-      <div class="viewCSV"></div>
+
+
+      <div class="view-json">
+        <button class="get-json-button">Get JSON</button>
+      </div>
+
     </div>
-    <script src="./app.js"></script>
+
+
+    <script type="module" src="./js/app.js"></script>
   </body>
 </html>
