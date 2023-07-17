@@ -2,7 +2,6 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from 'url';
-import liveJSONFetcher from "./icecatJSON/liveJSONFetcher.js"; 
 import favicon from 'serve-favicon'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -18,4 +17,3 @@ app.get('/', (req, res) => {
 })
 
 app.use(express.static(__dirname + '/public'));
-// console.log(await liveJSONFetcher.jsonGetProductByID('valera-shop', "11771947", "EN"))
