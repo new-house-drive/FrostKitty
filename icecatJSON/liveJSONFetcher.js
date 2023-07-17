@@ -1,11 +1,14 @@
 import fetch from "node-fetch";
 
-const DOMAIN = `https://live.icecat.biz/api?` 
 
 // skeleton of creating a link by IcecatID
 //TODO: add options to use MPN & Brand or GTIN
+//TODO: add optional parameters
 
-function _jsonCreateLink(shopname, icecat_id, lang) {
+function jsonCreateLink(shopname, icecat_id, lang) {
+  const DOMAIN = `https://live.icecat.biz/api?` 
+  
+  
   let url =
     DOMAIN +
     `shopname=${shopname}` +
@@ -14,10 +17,11 @@ function _jsonCreateLink(shopname, icecat_id, lang) {
     `&content=`;
   console.log("Your link is: " + url)
   return url;
+
 }
 
 // get JSON for single product.
-async function _fetchProduct(url) {
+async function fetchProduct(url) {
   const response = await fetch(url);
   const productData = await response.json();
   return productData;
@@ -25,11 +29,13 @@ async function _fetchProduct(url) {
 
 // Customer level function
 async function jsonGetProductByID(shopname, icecat_id, lang) {
-  const url = _jsonCreateLink(shopname, icecat_id, lang);
-  let product = await _fetchProduct(url);
+  const url = jsonCreateLink(shopname, icecat_id, lang);
+  let product = await fetchProduct(url);
   return product;
 }
 
 export default {
+  jsonCreateLink,
+  fetchProduct,
   jsonGetProductByID
 };
