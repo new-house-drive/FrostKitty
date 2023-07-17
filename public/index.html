@@ -5,23 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FrostKitty</title>
     <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
+  </head>
+  <body>
     <div class="board">
       <div class="header">
-        <img src="kitty-logo.png" alt="Frost Kitty" class="logo-image"/>
-        <label class="logo-title">frost<br>kitty</label>
+        <img src="kitty-logo.png" alt="Frost Kitty" class="logo-image" />
+        <label class="logo-title">frost<br />kitty</label>
         <button class="top-nav" id="view-XML">XML</button>
         <button class="top-nav" id="view-JSON">JSON</button>
         <button class="top-nav" id="view-JSON">CSV</button>
       </div>
       <div class="viewJSON">
-        
+        <!-- shopname: input -->
+        <!-- app-key: input -->
+        <!-- brand: input -->
+        <!-- mpn: input -->
+        <!-- gtin: input -->
+        <!-- icecat ID: input -->
+        <div class="json-input-form">
+          <label for="shopname">Shopname</label>
+          <input type="text" id="shopname" name="shopname" />
+
+          <label for="app-key">App-key</label>
+          <input type="text" id="app-key" name="app-key" />
+
+          <label for="brand">Brand</label>
+          <input type="text" id="brand" name="brand" />
+
+          <label for="mpn">MPN</label>
+          <input type="text" id="mpn" name="mpn" />
+
+          <label for="icecat-id">Icecat ID</label>
+          <input type="text" id="icecat-id" name="icecat-id" />
+
+          <label for="shopname">GTIN</label>
+          <input type="text" id="gtin" name="gtin" />
+
+          <button>Get JSON</button>
+        </div>
       </div>
-      <div class="viewXML">
-      </div>
-      <div class="viewCSV">
-      </div>
+      <div class="viewXML"></div>
+      <div class="viewCSV"></div>
     </div>
     <script src="./app.js"></script>
   </body>
