@@ -4,7 +4,8 @@ const getJSONButton = document.querySelector(".get-json-button")
 getJSONButton.onclick = () => {
     const inputShopname = document.getElementById("input-shopname").value
     const inputIcecatID = document.getElementById("input-icecat-id").value
-    let url = constructJSONLink(inputShopname, inputIcecatID, "EN")
+    const inputLang = document.getElementById('input-lang').value
+    let url = constructJSONLink(inputShopname, inputIcecatID, inputLang)
     window.open(url, '_blank') 
 };
 
