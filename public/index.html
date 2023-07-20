@@ -24,7 +24,7 @@
       <!-- icecat ID: input -->
       <div class="input-form">
         <label for="shopname">Shopname</label>
-        <input type="text" id="input-shopname" name="shopname" />
+        <input type="text" id="input-shopname" name="shopname" placeholder="valera-shop" />
 
         <label for="app-key">App-key</label>
         <input type="text" id="input-app-key" name="app-key" />
@@ -36,13 +36,114 @@
         <input type="text" id="input-mpn" name="mpn" />
 
         <label for="icecat-id">Icecat ID</label>
-        <input type="text" id="input-icecat-id" name="icecat-id" />
+        <input type="text" id="input-icecat-id" name="icecat-id" placeholder="56195846" />
 
         <label for="shopname">GTIN</label>
         <input type="text" id="input-gtin" name="gtin" />
 
         <label for="lang">Language</label>
-        <input type="select" id="input-language">
+        <select name="lang" id="input-lang">
+          <optgroup label="Europe">
+            <option value="EN">🇬🇧 English</option>
+            <option value="NL">🇳🇱 Dutch</option>
+            <option value="FR">🇫🇷 French</option>
+            <option value="DE">🇩🇪 Deutsch</option>
+            <option value="IT">🇮🇹 Italian</option>
+            <option value="ES">🇪🇸 Spanish</option>
+            <option value="DK">🇩🇰 Danish</option>
+            <option value="PT">🇵🇹 Portuguese</option>
+            <option value="SV">🇸🇪 Swedish</option>
+            <option value="PL">🇵🇱 Polish</option>
+            <option value="CZ">🇨🇿 Czech</option>
+            <option value="HU">🇭🇺 Hungarian</option>
+            <option value="FI">🇫🇮 Finnish</option>
+            <option value="EL">🇬🇷 Greek</option>
+            <option value="NO">🇳🇴 Norwegian</option>
+            <option value="BG">🇧🇬 Bulgarian</option>
+            <option value="KA">🇬🇪 Georgian</option>
+            <option value="RO">🇷🇴 Romanian</option>
+            <option value="SR">🇷🇸 Serbian</option>
+            <option value="UK">🇺🇦 Ukrainian</option>
+            <option value="RU_UA">🇺🇦 Russian (Ukraine)</option>
+            <option value="CA">🇪🇸 Catalon</option>
+            <option value="HR">🇭🇷 Croatian</option>
+            <option value="MK">🇲🇰 Macedonian</option>
+            <option value="SL">🇸🇮 Slovenian</option>
+            <option value="LT">🇱🇹 Lithuanian</option>
+            <option value="LV">🇱🇻 Latvian</option>
+            <option value="ET">🇪🇪 Estonian</option>
+            <option value="DE_CH">🇨🇭 Deutch (Switzerland)</option>
+            <option value="FR_CH">🇨🇭 French (Switzerland)</option>
+            <option value="IT_CH">🇨🇭 Italian (Switzerland)</option>
+            <option value="SK">🇸🇰 Slovak</option>
+            <option value="DE_BE">🇧🇪 Deutch (Belgium)</option>
+            <option value="FR_BE">🇧🇪 French (Belgium)</option>
+            <option value="NL_BE">🇧🇪 Dutch (Belgium)</option>
+            <option value="DE_AT">🇦🇹 Deutch (Austria)</option>
+            <option value="EN_IE">🇮🇪 English (Ireland)</option>
+            
+          </optgroup>
+          <optgroup label="North America">
+            <option value="US">🇺🇸 English (USA)</option>
+            <option value="EN_CA">🇨🇦 English (Canada)</option>
+            <option value="FR_CA">🇨🇦 French (Canada)</option>
+            <option value="ES_MX">🇲🇽 Spanish (Mexico)</option>
+            
+          </optgroup>
+          <optgroup label="Asia">
+            <option value="AR">🇸🇦 Arabic</option>
+            <option value="EN_SA">🇸🇦 English (Saudi Arabia)</option>
+            <option value="EN_AE">🇦🇪 English (UAE)</option>
+            <option value="RU">🇷🇺 Russian</option>
+            <option value="VI">🇻🇳 Vietnamese</option>
+            <option value="ZH">🇹🇼 Chinese (Simplified)</option>
+            <option value="ZH_TW">🇹🇼 Chinese (Traditional)</option>
+            <option value="TR">🇹🇷 Turkish</option>
+            <option value="JA">🇯🇵 Japanese</option>
+            <option value="KO">🇰🇷 Korean</option>
+            <option value="EN_SG">🇸🇬 English (Singapore)</option>
+            <option value="ID">🇮🇩 Indonesian</option>
+            <option value="EN_ID">🇮🇩 English (Indonesia)</option>
+            <option value="HE">🇮🇱 Hebrew</option>
+            <option value="FA">🇮🇷 Farsi</option>
+            <option value="TH">🇹🇭 Thai</option>
+            <option value="EN_MY">🇲🇾 English(Malaysia)</option>
+            <option value="MS">🇲🇾 Malaysian</option>
+            <option value="TA">🇱🇰 Tamil</option>
+            <option value="BN">🇧🇩 Bengali</option>
+            <option value="EN_PH">🇵🇭 English (Philippines)</option>
+            <option value="FL_PH">🇵🇭 Filipino</option>
+            <option value="HI">🇮🇳 Hindi</option>
+            <option value="EN_IN">🇮🇳 English (India)</option>
+            <option value="TE">🇮🇳 Telugu</option>
+            <option value="KN">🇮🇳 Kannada</option>
+            <option value="ML">🇮🇳 Malayaam</option>
+            <option value="MR">🇮🇳 Marathi</option>
+            
+          </optgroup>
+          <optgroup label="South America">
+            <option value="BR">🇧🇷 Portuguese (Brazil)</option>
+            <option value="ES_AR">🇦🇷 Spanish (Argentina)</option>
+            <option value="ES_CL">🇨🇱 Spanish (Chile)</option>
+            <option value="ES_CO">🇨🇴 Spanish (Colombia)</option>
+            <option value="ES_PE">🇵🇪 Spanish (Peru)</option>
+            
+          </optgroup>
+          <optgroup label="Oceania">
+            <option value="EN_AU">🇦🇺 English (Australia)</option>
+            <option value="EN_NZ">🇳🇿 English (New Zealand)</option>
+
+          </optgroup>
+          <optgroup label="Africa">
+          <option value="EN_ZA">🇿🇦 English (South Africa)</option>
+          </optgroup>
+
+
+
+
+
+
+        </select> 
       </div>
 
 
