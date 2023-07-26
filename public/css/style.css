@@ -27,3 +27,7 @@ body {
     grid-template-columns: 20% auto;
     max-width: 50%;
 }
+
+#dropdown-int {
+    display: none;
+}
