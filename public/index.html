@@ -24,7 +24,7 @@
       <!-- icecat ID: input -->
       <div class="input-form">
         <label for="shopname">Shopname</label>
-        <input type="text" id="input-shopname" name="shopname" placeholder="valera-shop" />
+        <input type="text" id="input-shopname" name="shopname" placeholder="openicecat-live" required/>
 
         <label for="app-key">App-key</label>
         <input type="text" id="input-app-key" name="app-key" />
@@ -36,15 +36,16 @@
         <input type="text" id="input-mpn" name="mpn" />
 
         <label for="icecat-id">Icecat ID</label>
-        <input type="text" id="input-icecat-id" name="icecat-id" placeholder="56195846" />
+        <input type="text" id="input-icecat-id" name="icecat-id" />
 
-        <label for="shopname">GTIN</label>
+        <label for="gtin">GTIN</label>
         <input type="text" id="input-gtin" name="gtin" />
 
         <label for="lang">Language</label>
         <select name="lang" id="input-lang">
+          <option id="dropdown-int" value="INT">🌏 International</option>
           <optgroup label="Europe">
-            <option value="EN">🇬🇧 English</option>
+            <option selected="selected" value="EN">🇬🇧 English</option>
             <option value="NL">🇳🇱 Dutch</option>
             <option value="FR">🇫🇷 French</option>
             <option value="DE">🇩🇪 Deutsch</option>
@@ -107,7 +108,7 @@
             <option value="HE">🇮🇱 Hebrew</option>
             <option value="FA">🇮🇷 Farsi</option>
             <option value="TH">🇹🇭 Thai</option>
-            <option value="EN_MY">🇲🇾 English(Malaysia)</option>
+            <option value="EN_MY">🇲🇾 English (Malaysia)</option>
             <option value="MS">🇲🇾 Malaysian</option>
             <option value="TA">🇱🇰 Tamil</option>
             <option value="BN">🇧🇩 Bengali</option>
@@ -138,7 +139,8 @@
           <option value="EN_ZA">🇿🇦 English (South Africa)</option>
           </optgroup>
 
-
+          
+          <input type="checkbox" id="json-granular" name="json-granular">
 
 
 
