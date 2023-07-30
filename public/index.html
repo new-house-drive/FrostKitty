@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
+    <div class="header">
+      <img src="./img/kitty-logo.png" alt="Frost Kitty" class="logo-image" />
+      <label class="logo-title">frost<br />kitty</label>
+      <button class="top-nav" id="view-XML">XML</button>
+      <button class="top-nav" id="view-JSON">JSON</button>
+      <button class="top-nav" id="view-CSV">CSV</button>
+    </div>
     <div class="board">
-      <div class="header">
-        <img src="./img/kitty-logo.png" alt="Frost Kitty" class="logo-image" />
-        <label class="logo-title">frost<br />kitty</label>
-        <button class="top-nav" id="view-XML">XML</button>
-        <button class="top-nav" id="view-JSON">JSON</button>
-        <button class="top-nav" id="view-CSV">CSV</button>
-      </div>
       <!-- shopname: input -->
       <!-- app-key: input -->
       <!-- brand: input -->
@@ -66,6 +66,7 @@
             <option value="SR">🇷🇸 Serbian</option>
             <option value="UK">🇺🇦 Ukrainian</option>
             <option value="RU_UA">🇺🇦 Russian (Ukraine)</option>
+            <option value="RU">🇷🇺 Russian</option>
             <option value="CA">🇪🇸 Catalon</option>
             <option value="HR">🇭🇷 Croatian</option>
             <option value="MK">🇲🇰 Macedonian</option>
@@ -95,9 +96,8 @@
             <option value="AR">🇸🇦 Arabic</option>
             <option value="EN_SA">🇸🇦 English (Saudi Arabia)</option>
             <option value="EN_AE">🇦🇪 English (UAE)</option>
-            <option value="RU">🇷🇺 Russian</option>
             <option value="VI">🇻🇳 Vietnamese</option>
-            <option value="ZH">🇹🇼 Chinese (Simplified)</option>
+            <option value="ZH">🇭🇰 Chinese (Simplified)</option>
             <option value="ZH_TW">🇹🇼 Chinese (Traditional)</option>
             <option value="TR">🇹🇷 Turkish</option>
             <option value="JA">🇯🇵 Japanese</option>
@@ -141,6 +141,7 @@
         </select> 
       </div>
 
+      <div class="view-json">
       <div class="granular-call-form-container"> 
         <fieldset class="granular-call-form">
           <legend>✨ Granular Call</legend>
@@ -150,78 +151,75 @@
           ReasonsToBuy, GeneralInfo, Videos, Tours3d, Manuals, FeatureGroups
           Reviews -->
           <div>
-            <input type="checkbox" id="granular-title" name="title" value="title">
-            <label for="title">Title</label>
+            <input type="checkbox" id="granular-title" class="granular-checkbox" value="title">
+            <label for="granular-title">Title</label>
           </div>      
           <div>
-            <input type="checkbox" id="granular-gallery" name="gallery" value="gallery">
-            <label for="gallery">Gallery</label>
+            <input type="checkbox" id="granular-gallery" class="granular-checkbox" value="gallery">
+            <label for="granular-gallery">Gallery</label>
           </div> 
           <div>
-            <input type="checkbox" id="granular-related" name="related" value="related">
-            <label for="related">Related</label>
+            <input type="checkbox" id="granular-related" class="granular-checkbox" value="related">
+            <label for="granular-related">Related</label>
           </div> 
           <div>
-            <input type="checkbox" id="granular-feature-logos" name="feature-logos" value="feature%2">
-            <lable for="feature-logos">Feature Logos</lable>
+            <input type="checkbox" id="granular-feature-logos" class="granular-checkbox" value="FeatureLogos">
+            <label for="granular-feature-logos">Feature Logos</label>
           </div>
           <div>
-            <input type="checkbox" id="granular-product-story" name="product-story" value="product-story">
-            <label for="product-story">Product Story</label>
+            <input type="checkbox" id="granular-product-story" class="granular-checkbox" value="ProductStory">
+            <label for="granular-product-story">Product Story</label>
           </div>
           <div>
-            <input type="checkbox" id="granular-image" name="image" value="image">
+            <input type="checkbox" id="granular-image" class="granular-checkbox" value="Image">
             <label for="granular-image">Image</label>
           </div>
           <div>
-            <input type="checkbox" id="granular-essential-info" name="essential-info" value="essential-info">
+            <input type="checkbox" id="granular-essential-info" class="granular-checkbox" value="EssentialInfo">
             <label for="granular-essential-info">Essential Info</label>
           </div>
           <div>
-            <input type="checkbox" id="granular-marketing-text" name="marketing-text" value="marketing-text">
+            <input type="checkbox" id="granular-marketing-text" class="granular-checkbox" value="MarketingText">
             <label for="granular-marketing-text">Marketing Text</label>
           </div>
           <div>
-            <input type="checkbox" id="granular-variants" name="variants" value="variants">
+            <input type="checkbox" id="granular-variants" class="granular-checkbox" value="Variants">
             <label for="granular-variants">Variants</label>
           </div>
           <div>
-            <input type="checkbox" id="granular-bullet-points" name="bullet-points" value="bullet-points">
+            <input type="checkbox" id="granular-bullet-points" class="granular-checkbox" value="BulletPoints">
             <label for="granular-bullet-points">Bullet Points</label>
           </div>
           <div>
-            <input type="checkbox" id="granular-reasons-to-buy" name="reasons-to-buy" value="reasons-to-buy">
+            <input type="checkbox" id="granular-reasons-to-buy" class="granular-checkbox" value="ReasonsToBuy"> 
             <label for="granular-reasons-to-buy">Reasons to Buy</label>
           </div>
           <div>
-            <input type="checkbox" id="granular-general-info" name="general-info" value="general-info">
+            <input type="checkbox" id="granular-general-info" class="granular-checkbox" value="GeneralInfo">
             <label for="granular-general-info">General Info</label>
           </div>
           <div>
-            <input type="checkbox" id="granular-videos" name="videos" value="videos">
+            <input type="checkbox" id="granular-videos" class="granular-checkbox" value="Videos">
             <label for="granular-videos">Videos</label>
           </div>
           <div>
-            <input type="checkbox" id="granular-tours3d" name="tours3d" value="tours3d">
+            <input type="checkbox" id="granular-tours3d" class="granular-checkbox" value="Tours3D">
             <label for="granular-tours3d">Tours 3D</label>
           </div>
           <div>
-            <input type="checkbox" id="granular-manuals" name="manuals" value="manuals">
+            <input type="checkbox" id="granular-manuals" class="granular-checkbox" value="Manuals">
             <label for="granular-manuals">Manuals</label>
           </div>
           <div>
-            <input type="checkbox" id="granular-feature-groups" name="feature-groups" value="feature-groups">
+            <input type="checkbox" id="granular-feature-groups" class="granular-checkbox" value="FeatureGroups">
             <label for="granular-feature-groups">Feature Groups</label>
           </div>
           <div>
-            <input type="checkbox" id="granular-reasons-to-buy" name="reasons-to-buy" value="reasons-to-buy">
-            <label for="granular-reasons-to-buy">Reasons to Buy</label>
+            <input type="checkbox" id="granular-reviews" class="granular-checkbox" value="Reviews">
+            <label for="granular-reviews">Reviews</label>
           </div>
         </fieldset>
       </div>
-
-
-      <div class="view-json">
         <button class="get-json-button">Get JSON</button>
       </div>
 
