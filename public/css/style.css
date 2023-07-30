@@ -31,3 +31,12 @@ body {
 #dropdown-int {
     display: none;
 }
+
+.granular-call-form-container {
+    width: 33%;
+}
+
+.granular-call-form {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
