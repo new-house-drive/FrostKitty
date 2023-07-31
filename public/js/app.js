@@ -16,10 +16,11 @@ getJSONButton.onclick = () => {
     // Product Identifiers Wrong Condition
     if (!inputIcecatID && !inputGTIN) {
       if (!inputMPN || !inputBrand) {
-        alert ('please use GTIN, ID or Brand + MPN pair to get the product')
+        alert ('Please use GTIN, ID or Brand + MPN pair to get the product')
         return
       }
     }
+
 
     let url = constructJSONLink(inputShopname, inputAppKey, inputIcecatID, inputLang, inputGTIN, inputMPN, inputBrand)
     window.open(url, '_blank') 
@@ -44,6 +45,26 @@ function constructJSONLink(shopname, appkey, icecat_id, lang, gtin, mpn, brand, 
     url += `lang=${lang}`;
 
     console.log("Your link is: " + url)
-    return url;
+
+    let granularList = getGranularOptionsList()
+
+    if(!granularList) return url;
+
+    url += "&content=" + granularList.toString()
+    return url
   
   }
+
+function getGranularOptionsList() {
+  let granularOptionsList = []
+  let checkboxesList = document.querySelectorAll(".granular-checkbox")
+  
+  for (checkbox of checkboxesList) {
+    if (checkbox.checked) {
+      granularOptionsList.push(checkbox.value)
+      console.log(checkbox)
+    }
+  }
+
+  return granularOptionsList
+}
