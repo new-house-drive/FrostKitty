@@ -2,12 +2,18 @@ body {
     margin: 0%;
 }
 
+.board {
+    width: 40%;
+    margin: 20px 30%;
+}
+
 .header {
     background-color: rgb(218, 183, 252);
     width: 100%;
     min-height: 80px;
     position: sticky;
     border: 2px solid black;
+    padding-left: 20%;
 }
 
 .logo-image {
@@ -25,7 +31,6 @@ body {
 .input-form {
     display: grid;
     grid-template-columns: 20% auto;
-    max-width: 50%;
 }
 
 #dropdown-int {
@@ -33,10 +38,12 @@ body {
 }
 
 .granular-call-form-container {
-    width: 50%;
+    margin-top: 10px;
+    background-color: rgb(246, 208, 240);
 }
 
 .granular-call-form {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto;
+
 }
