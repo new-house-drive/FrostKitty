@@ -4,16 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FrostKitty</title>
-    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <div class="header">
       <img src="./img/kitty-logo.png" alt="Frost Kitty" class="logo-image" />
       <label class="logo-title">frost<br />kitty</label>
-      <button class="top-nav" id="view-XML">XML</button>
-      <button class="top-nav" id="view-JSON">JSON</button>
-      <button class="top-nav" id="view-CSV">CSV</button>
+      <button class="top-nav" id="view-XML-button">XML</button>
+      <button class="top-nav" id="view-JSON-button">JSON</button>
+      <button class="top-nav" id="view-CSV-button">CSV</button>
     </div>
     <div class="board">
       <!-- shopname: input -->
@@ -24,7 +24,13 @@
       <!-- icecat ID: input -->
       <div class="input-form">
         <label for="shopname">Shopname</label>
-        <input type="text" id="input-shopname" name="shopname" placeholder="openicecat-live" required/>
+        <input
+          type="text"
+          id="input-shopname"
+          name="shopname"
+          placeholder="openicecat-live"
+          required
+        />
 
         <label for="app-key">App-key</label>
         <input type="text" id="input-app-key" name="app-key" />
@@ -83,14 +89,12 @@
             <option value="NL_BE">🇧🇪 Dutch (Belgium)</option>
             <option value="DE_AT">🇦🇹 Deutch (Austria)</option>
             <option value="EN_IE">🇮🇪 English (Ireland)</option>
-            
           </optgroup>
           <optgroup label="North America">
             <option value="US">🇺🇸 English (USA)</option>
             <option value="EN_CA">🇨🇦 English (Canada)</option>
             <option value="FR_CA">🇨🇦 French (Canada)</option>
             <option value="ES_MX">🇲🇽 Spanish (Mexico)</option>
-            
           </optgroup>
           <optgroup label="Asia">
             <option value="AR">🇸🇦 Arabic</option>
@@ -120,7 +124,6 @@
             <option value="KN">🇮🇳 Kannada</option>
             <option value="ML">🇮🇳 Malayaam</option>
             <option value="MR">🇮🇳 Marathi</option>
-            
           </optgroup>
           <optgroup label="South America">
             <option value="BR">🇧🇷 Portuguese (Brazil)</option>
@@ -128,103 +131,187 @@
             <option value="ES_CL">🇨🇱 Spanish (Chile)</option>
             <option value="ES_CO">🇨🇴 Spanish (Colombia)</option>
             <option value="ES_PE">🇵🇪 Spanish (Peru)</option>
-            
           </optgroup>
           <optgroup label="Oceania">
             <option value="EN_AU">🇦🇺 English (Australia)</option>
             <option value="EN_NZ">🇳🇿 English (New Zealand)</option>
-
           </optgroup>
           <optgroup label="Africa">
-          <option value="EN_ZA">🇿🇦 English (South Africa)</option>
+            <option value="EN_ZA">🇿🇦 English (South Africa)</option>
           </optgroup>
-        </select> 
+        </select>
       </div>
 
       <div class="view-json">
-      <div class="granular-call-form-container"> 
-        <fieldset class="granular-call-form">
-          <legend>✨ Granular Call</legend>
-          <!--* 
+        <div class="granular-call-form-container">
+          <fieldset class="granular-call-form">
+            <legend>✨ Granular Call</legend>
+            <!--* 
           Title, Gallery, Related, FeatureLogos, ProductStory
           Image, EssentialInfo, MarketingText, Variants, BulletPoints
           ReasonsToBuy, GeneralInfo, Videos, Tours3d, Manuals, FeatureGroups
           Reviews -->
-          <div>
-            <input type="checkbox" id="granular-title" class="granular-checkbox" value="title">
-            <label for="granular-title">Title</label>
-          </div>      
-          <div>
-            <input type="checkbox" id="granular-gallery" class="granular-checkbox" value="gallery">
-            <label for="granular-gallery">Gallery</label>
-          </div> 
-          <div>
-            <input type="checkbox" id="granular-related" class="granular-checkbox" value="related">
-            <label for="granular-related">Related</label>
-          </div> 
-          <div>
-            <input type="checkbox" id="granular-feature-logos" class="granular-checkbox" value="FeatureLogos">
-            <label for="granular-feature-logos">Feature Logos</label>
-          </div>
-          <div>
-            <input type="checkbox" id="granular-product-story" class="granular-checkbox" value="ProductStory">
-            <label for="granular-product-story">Product Story</label>
-          </div>
-          <div>
-            <input type="checkbox" id="granular-image" class="granular-checkbox" value="Image">
-            <label for="granular-image">Image</label>
-          </div>
-          <div>
-            <input type="checkbox" id="granular-essential-info" class="granular-checkbox" value="EssentialInfo">
-            <label for="granular-essential-info">Essential Info</label>
-          </div>
-          <div>
-            <input type="checkbox" id="granular-marketing-text" class="granular-checkbox" value="MarketingText">
-            <label for="granular-marketing-text">Marketing Text</label>
-          </div>
-          <div>
-            <input type="checkbox" id="granular-variants" class="granular-checkbox" value="Variants">
-            <label for="granular-variants">Variants</label>
-          </div>
-          <div>
-            <input type="checkbox" id="granular-bullet-points" class="granular-checkbox" value="BulletPoints">
-            <label for="granular-bullet-points">Bullet Points</label>
-          </div>
-          <div>
-            <input type="checkbox" id="granular-reasons-to-buy" class="granular-checkbox" value="ReasonsToBuy"> 
-            <label for="granular-reasons-to-buy">Reasons to Buy</label>
-          </div>
-          <div>
-            <input type="checkbox" id="granular-general-info" class="granular-checkbox" value="GeneralInfo">
-            <label for="granular-general-info">General Info</label>
-          </div>
-          <div>
-            <input type="checkbox" id="granular-videos" class="granular-checkbox" value="Videos">
-            <label for="granular-videos">Videos</label>
-          </div>
-          <div>
-            <input type="checkbox" id="granular-tours3d" class="granular-checkbox" value="Tours3D">
-            <label for="granular-tours3d">Tours 3D</label>
-          </div>
-          <div>
-            <input type="checkbox" id="granular-manuals" class="granular-checkbox" value="Manuals">
-            <label for="granular-manuals">Manuals</label>
-          </div>
-          <div>
-            <input type="checkbox" id="granular-feature-groups" class="granular-checkbox" value="FeatureGroups">
-            <label for="granular-feature-groups">Feature Groups</label>
-          </div>
-          <div>
-            <input type="checkbox" id="granular-reviews" class="granular-checkbox" value="Reviews">
-            <label for="granular-reviews">Reviews</label>
-          </div>
-        </fieldset>
-      </div>
+            <div>
+              <input
+                type="checkbox"
+                id="granular-title"
+                class="granular-checkbox"
+                value="title"
+              />
+              <label for="granular-title">Title</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="granular-gallery"
+                class="granular-checkbox"
+                value="gallery"
+              />
+              <label for="granular-gallery">Gallery</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="granular-related"
+                class="granular-checkbox"
+                value="related"
+              />
+              <label for="granular-related">Related</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="granular-feature-logos"
+                class="granular-checkbox"
+                value="FeatureLogos"
+              />
+              <label for="granular-feature-logos">Feature Logos</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="granular-product-story"
+                class="granular-checkbox"
+                value="ProductStory"
+              />
+              <label for="granular-product-story">Product Story</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="granular-image"
+                class="granular-checkbox"
+                value="Image"
+              />
+              <label for="granular-image">Image</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="granular-essential-info"
+                class="granular-checkbox"
+                value="EssentialInfo"
+              />
+              <label for="granular-essential-info">Essential Info</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="granular-marketing-text"
+                class="granular-checkbox"
+                value="MarketingText"
+              />
+              <label for="granular-marketing-text">Marketing Text</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="granular-variants"
+                class="granular-checkbox"
+                value="Variants"
+              />
+              <label for="granular-variants">Variants</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="granular-bullet-points"
+                class="granular-checkbox"
+                value="BulletPoints"
+              />
+              <label for="granular-bullet-points">Bullet Points</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="granular-reasons-to-buy"
+                class="granular-checkbox"
+                value="ReasonsToBuy"
+              />
+              <label for="granular-reasons-to-buy">Reasons to Buy</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="granular-general-info"
+                class="granular-checkbox"
+                value="GeneralInfo"
+              />
+              <label for="granular-general-info">General Info</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="granular-videos"
+                class="granular-checkbox"
+                value="Videos"
+              />
+              <label for="granular-videos">Videos</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="granular-tours3d"
+                class="granular-checkbox"
+                value="Tours3D"
+              />
+              <label for="granular-tours3d">Tours 3D</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="granular-manuals"
+                class="granular-checkbox"
+                value="Manuals"
+              />
+              <label for="granular-manuals">Manuals</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="granular-feature-groups"
+                class="granular-checkbox"
+                value="FeatureGroups"
+              />
+              <label for="granular-feature-groups">Feature Groups</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="granular-reviews"
+                class="granular-checkbox"
+                value="Reviews"
+              />
+              <label for="granular-reviews">Reviews</label>
+            </div>
+          </fieldset>
+        </div>
         <button class="get-json-button">Get JSON</button>
       </div>
 
+      <div class="view-xml"></div>
+      <div class="view-csv"></div>
     </div>
-
 
     <script src="./js/app.js"></script>
   </body>
