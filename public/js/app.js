@@ -1,5 +1,34 @@
-const getJSONButton = document.querySelector(".get-json-button")
 
+
+// const viewJSONButton = document.getElementById('view-JSON')
+// viewJSONButton.onclick = () => {
+//   document.querySelector('.view-json').setAttribute('display', 'relative')
+  
+//   document.querySelector('.view-xml').setAttribute('display', 'none')
+//   document.querySelector('.view-csv').setAttribute('display', 'none')
+// }
+
+//* Behaviour on JSON button clicked.
+document.getElementById('view-XML-button').onclick = () => {
+  document.querySelector('.view-xml').setAttribute('display', 'relative')
+  
+  document.querySelector('.view-json').style.display = 'none'
+  // document.querySelector('.view-csv').setAttribute('display', 'none')
+
+  document.querySelector('#dropdown-int').style.display = 'inherit'
+}
+
+// const viewCSVButton = document.getElementById('view-CSV')
+// viewCSVButton.onclick = () => {
+//   document.querySelector('.view-csv').setAttribute('display', 'relative')
+
+//   document.querySelector('.view-xml').setAttribute('display', 'none')
+//   document.querySelector('.view-json').setAttribute('display', 'none')
+// }
+
+
+
+const getJSONButton = document.querySelector(".get-json-button")
 
 getJSONButton.onclick = () => {
     // Essential information
@@ -30,6 +59,7 @@ getJSONButton.onclick = () => {
 //* One-to-rule-them-all JSON function.
 // input -> all fields from product form for JSON
 // Checks all the fields and add input as attributes
+// output -> link to Icecat Live JSOn
 function constructJSONLink(shopname, appkey, icecat_id, lang, gtin, mpn, brand, content) {
     const DOMAIN = `https://live.icecat.biz/api?`     
     
@@ -55,6 +85,9 @@ function constructJSONLink(shopname, appkey, icecat_id, lang, gtin, mpn, brand, 
   
   }
 
+//* to be used inside constructJSON link
+// no input
+// output [selected, granular, checkboxes]
 function getGranularOptionsList() {
   let granularOptionsList = []
   let checkboxesList = document.querySelectorAll(".granular-checkbox")
