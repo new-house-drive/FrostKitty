@@ -8,7 +8,7 @@ body {
 }
 
 .header {
-    background-color: rgb(218, 183, 252);
+    background-color: rgb(121, 0, 125);
     width: 100%;
     min-height: 80px;
     position: sticky;
@@ -30,16 +30,29 @@ body {
 
 .input-form {
     display: grid;
+    grid-row-gap: 6px;
     grid-template-columns: 20% auto;
+    grid-column-gap: 5px;
+    margin-right: 20%;
+    font-size: large;
+    text-align: right;
+}
+
+#input-lang {
+    max-width: 150px;
 }
 
 #dropdown-int {
     display: none;
 }
 
+
 .granular-call-form-container {
     margin-top: 10px;
+    margin-left: 5%;
+
     background-color: rgb(246, 208, 240);
+    max-width: 75%;
 }
 
 .granular-call-form {
