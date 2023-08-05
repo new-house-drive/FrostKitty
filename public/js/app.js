@@ -27,10 +27,7 @@ document.getElementById('view-XML-button').onclick = () => {
 // }
 
 
-
-const getJSONButton = document.querySelector(".get-json-button")
-
-getJSONButton.onclick = () => {
+document.querySelector(".get-json-button").onclick = () => {
     // Essential information
     const inputShopname = document.getElementById("input-shopname").value
     const inputLang = document.getElementById('input-lang').value
@@ -55,7 +52,16 @@ getJSONButton.onclick = () => {
     window.open(url, '_blank') 
 };
 
+document.querySelector('#granular-select-all').onclick = () => {
 
+  const checkboxesList = document.querySelectorAll(".granular-checkbox")
+  for (checkbox of checkboxesList) checkbox.checked = true
+}
+
+document.querySelector('#granular-remove-all').onclick = () => {
+  const checkboxesList = document.querySelectorAll(".granular-checkbox")
+  for (checkbox of checkboxesList) checkbox.checked = false
+}
 //* One-to-rule-them-all JSON function.
 // input -> all fields from product form for JSON
 // Checks all the fields and add input as attributes
