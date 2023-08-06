@@ -1,21 +1,13 @@
-
-
-// const viewJSONButton = document.getElementById('view-JSON')
-// viewJSONButton.onclick = () => {
-//   document.querySelector('.view-json').setAttribute('display', 'relative')
-  
-//   document.querySelector('.view-xml').setAttribute('display', 'none')
-//   document.querySelector('.view-csv').setAttribute('display', 'none')
-// }
-
-//* Behaviour on JSON button clicked.
+//* Behaviour on XML button clicked.
+// Also default view onload
+//TODO: Separate to external function
 document.getElementById('view-XML-button').onclick = () => {
   document.querySelector('.view-xml').setAttribute('display', 'relative')
   
-  document.querySelector('.view-json').style.display = 'none'
-  // document.querySelector('.view-csv').setAttribute('display', 'none')
-
   document.querySelector('#dropdown-int').style.display = 'inherit'
+  // Hiding all JSON only and CSV only options
+  const jsonOnlyDivsList = document.querySelectorAll('.json-only')
+  for (div of jsonOnlyDivsList) div.style.display = "none"
 }
 
 // const viewCSVButton = document.getElementById('view-CSV')
@@ -26,7 +18,7 @@ document.getElementById('view-XML-button').onclick = () => {
 //   document.querySelector('.view-json').setAttribute('display', 'none')
 // }
 
-
+//* JSON only buttons behaviour!
 document.querySelector(".get-json-button").onclick = () => {
     // Essential information
     const inputShopname = document.getElementById("input-shopname").value
