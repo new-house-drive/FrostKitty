@@ -4,33 +4,59 @@ body {
 
 .board {
     width: 60%;
-    margin: 30px;
+    padding: 30px;
 }
 
-.header-xml {
+.top-nav-bar {
     width: 100%;
     min-height: 80px;
     position: sticky;
     border: 2px solid black;
     padding-left: 30px;
     
-    background-color: rgb(121, 0, 125);
 }
 
-.header-json {
-    background-color: rgb(1, 155, 14);
+.top-xml-selected {
+    background-color: #D7289F;
+}
+
+.top-json-selected {
+    background-color: #9FD728;
+}
+
+.top-nav-btn {
+    color: #48D728;
+    background-color: #D7289F;
+    padding: 20px 10px;
+    margin-top: 5px;
+    border: 2px solid #48D728;
+    border-radius: 10px;
+    font-size: larger;
+}
+
+.top-nav-btn:hover {
+    background-color: #48D728;
+    color: #D7289F;
+}
+
+.top-nav-btn:active {
+    color: white;
+    border-color: white;
+    background-color: #D72848;
 }
 
 .logo-image {
     float: left;
     margin: 5px;
+    
 }
 
 .logo-title {
     float: left;
     font-weight: 800;
     font-size: xx-large;
-    color: rgb(252, 193, 238);
+    color: #48D728;
+    margin-right: 15px;
 }
 
 .input-form {
@@ -90,7 +116,7 @@ body {
 }
 
 .get-json-button:hover {
-    border: 4px solid rgb(182, 247, 207);
-    color: rgb(182, 252, 209);
-    background-color: rgb(1, 14, 1);
+    border: 4px solid #9FD728;
+    color: #9FD728;
+    background-color: rgb(0, 0, 0);
 }

@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <div class="header-xml">
+    <div class="top-nav-bar top-xml-selected">
       <img src="./img/kitty-logo.png" alt="Frost Kitty" class="logo-image" />
       <label class="logo-title">frost<br />kitty</label>
-      <button class="top-nav" id="view-XML-button">XML</button>
-      <button class="top-nav" id="view-JSON-button-selected">JSON</button>
-      <button class="top-nav" id="view-CSV-button">CSV</button>
+      <button class="top-nav-btn" id="view-XML-button">XML</button>
+      <button class="top-nav-btn" id="view-JSON-button">JSON</button>
+      <button class="top-nav-btn" id="view-CSV-button">CSV</button>
     </div>
     <div class="board">
       <!-- shopname: input -->
@@ -23,10 +23,11 @@
       <!-- gtin: input -->
       <!-- icecat ID: input -->
       <div class="input-form">
-        <label for="shopname">Shopname</label>
+        <label class="json-only" for="shopname">Shopname</label>
         <input        
           type="text"
           id="input-shopname"
+          class="json-only"
           name="shopname"
           placeholder="openicecat-live"
           required
@@ -49,7 +50,7 @@
 
         <label for="lang">Language</label>
         <select name="lang" id="input-lang">
-          <option id="dropdown-int" value="INT">🌏 International</option>
+          <option class="xml-only" value="INT">🌏 International</option>
           <optgroup label="Europe">
             <option selected="selected" value="EN">🇬🇧 English</option>
             <option value="NL">🇳🇱 Dutch</option>
@@ -319,8 +320,8 @@
         </div>
       </div>
 
-      <div class="view-xml"></div>
-      <div class="view-csv"></div>
+      <div class="view-xml xml-only"></div>
+      <div class="view-csv csv-only"></div>
 
     </div>
 
