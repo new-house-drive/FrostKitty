@@ -11,6 +11,7 @@ document.querySelector("#view-JSON-button").onclick = () => {
   createJSONview();
 };
 
+
 //* Behaviour on top-nav XML button clicked.
 // Also default view onload
 function createDefaultXMLview() {
@@ -56,6 +57,15 @@ document.querySelector(".get-xml-button").onclick = () => {
     }
   }
 };
+
+document.querySelector("#show-password-btn").onclick = () => {
+  let inputPassword = document.querySelector('#input-password')
+  if (inputPassword.type === 'password') {
+    inputPassword.type = 'text'
+    return
+  }
+  inputPassword.type = 'password'
+}
 
 //* Behaviour on top-nav JSON button clicked!
 function createJSONview() {
