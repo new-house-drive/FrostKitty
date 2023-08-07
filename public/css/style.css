@@ -19,8 +19,8 @@ body {
 }
 
 .top-xml-selected {
-    background: rgb(167,255,191);
-    background: linear-gradient(211deg, rgba(167,255,191,1) 23%, rgba(255,167,231,1) 53%);   
+    background: rgb(26,231,0);
+background: linear-gradient(211deg, rgba(26,231,0,1) 23%, rgba(255,167,231,1) 53%);    
     color: black;
 }
 
@@ -81,10 +81,10 @@ body {
 }
 
 #show-password-btn {
-    padding: 5px 2px;
+    padding: 5px 4px;
     position: absolute;
     top: 3px;
-    right: 6px;
+    right: 0px;
     border: none;
     background-color: white;
     border-radius: 40%;
@@ -130,7 +130,7 @@ body {
 .input-form {
     display: grid;
     grid-row-gap: 6px;
-    grid-template-columns: 20% 50%;
+    grid-template-columns: 30% 50%;
     grid-column-gap: 5px;
     
     margin-right: 20%;
@@ -144,6 +144,7 @@ body {
 #input-lang {
     max-width: 150px;
     padding: 7px 20px;
+    font-size: large;
 }
 
 #dropdown-int {
