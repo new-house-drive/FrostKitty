@@ -52,8 +52,13 @@ background: linear-gradient(211deg, rgba(26,231,0,1) 23%, rgba(255,167,231,1) 53
 }
 
 .input-form-field {
-    padding: 5px;
-    font-size: large;
+    padding: 3px;
+    grid-column: auto / span 2;
+
+}
+
+#input-password {
+    grid-column: auto;
 }
 
 .input-form-label {
@@ -82,16 +87,12 @@ background: linear-gradient(211deg, rgba(26,231,0,1) 23%, rgba(255,167,231,1) 53
 
 #show-password-btn {
     padding: 5px 4px;
-    position: absolute;
-    top: 3px;
-    right: 0px;
-    border: none;
+    border: 1px solid gray;
     background-color: white;
-    border-radius: 40%;
+    margin-left: -6px;
 }
 
 #xml-outputRadioButton {
-    font-size: large;
     margin: 10px 90px;
 }
 /* JSON VIEW */
@@ -130,21 +131,16 @@ background: linear-gradient(211deg, rgba(26,231,0,1) 23%, rgba(255,167,231,1) 53
 .input-form {
     display: grid;
     grid-row-gap: 6px;
-    grid-template-columns: 30% 50%;
+    grid-template-columns: 80px 200px 25px;
     grid-column-gap: 5px;
     
-    margin-right: 20%;
-    
-    padding-right: 30%;
 
-    font-size: large;
     text-align: right;
 }
 
 #input-lang {
-    max-width: 150px;
-    padding: 7px 20px;
-    font-size: large;
+    max-width: 300px;
+    padding: 3px 20px;
 }
 
 #dropdown-int {
