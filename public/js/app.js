@@ -37,7 +37,7 @@ function createDefaultXMLview() {
 }
 
 //* XML only buttons behaviour!
-document.querySelector(".get-xml-button").onclick = () => {
+document.querySelector("#get-xml-button").onclick = () => {
   // Essential information
   const inputShopname = document.getElementById("input-shopname").value;
   const inputPassword = document.getElementById("input-password").value;
@@ -92,7 +92,7 @@ function createJSONview() {
 }
 
 //* JSON only buttons behaviour!
-document.querySelector(".get-json-button").onclick = () => {
+document.querySelector("#get-json-button").onclick = () => {
   // Essential information
   const inputShopname = document.getElementById("input-shopname").value;
   const inputLang = document.getElementById("input-lang").value;
