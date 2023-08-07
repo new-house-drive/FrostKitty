@@ -1,12 +1,14 @@
 body {
     margin: 0%;
 }
-
+/* COMMON FOR ALL VIEWS */
 .board {
     width: 60%;
     padding: 30px;
 }
-
+/** Top navigation bar */
+/* Top area and three buttons representing the oprtions */
+/* Each area also represents three states that can have */
 .top-nav-bar {
     width: 100%;
     min-height: 80px;
@@ -17,32 +19,97 @@ body {
 }
 
 .top-xml-selected {
-    background-color: #D7289F;
+    background: rgb(167,255,191);
+    background: linear-gradient(211deg, rgba(167,255,191,1) 23%, rgba(255,167,231,1) 53%);   
+    color: black;
 }
 
 .top-json-selected {
-    background-color: #9FD728;
+    background: rgb(255,0,0);
+    background: linear-gradient(211deg, rgba(255,0,0,1) 0%, rgba(66,54,255,1) 73%); 
+    color: white
+}
+
+.top-csv-selected {
+    background-color: #289fd7;
+    color: #D76028;
 }
 
 .top-nav-btn {
-    color: #48D728;
-    background-color: #D7289F;
     padding: 20px 10px;
     margin-top: 5px;
-    border: 2px solid #48D728;
     border-radius: 10px;
     font-size: larger;
+    min-width: 80px;
 }
 
-.top-nav-btn:hover {
-    background-color: #48D728;
-    color: #D7289F;
+.view-nav-button {
+    font-size: larger;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 20%;
+    border-radius: 15px;
 }
 
-.top-nav-btn:active {
+.input-form-field {
+    padding: 5px;
+    font-size: large;
+}
+
+.input-form-label {
+    padding: 8px 0px;
+}
+/* DEFAULT/XML VIEW */
+.button-xml-selected {
+    background: #ffa7e7;
+    border: 2px solid black;
+    color: black;
+}
+.button-xml-selected:hover {
+    background: rgb(255,0,0);
+    background: linear-gradient(211deg, rgba(255,0,0,1) 0%, rgba(234,54,255,1) 100%); 
+    color: rgb(255, 255, 255);
+    border-color: white;
+}
+.button-xml-selected:active {
     color: white;
     border-color: white;
-    background-color: #D72848;
+    background: #D72848;
+}
+#password-wrapping {
+    position: relative;
+}
+
+#show-password-btn {
+    padding: 5px 2px;
+    position: absolute;
+    top: 3px;
+    right: 6px;
+    border: none;
+    background-color: white;
+    border-radius: 40%;
+}
+
+#xml-outputRadioButton {
+    font-size: large;
+    margin: 10px 90px;
+}
+/* JSON VIEW */
+.button-json-selected {
+    background-color: rgba(66,54,255,1);
+    color: white;
+    border: 2px solid white;
+}
+.button-json-selected:hover {
+    background: rgb(249,249,255);
+    background: linear-gradient(349deg, rgba(249,249,255,1) 0%, rgba(0,212,255,1) 100%);
+    border-color: #2847D7;
+    color: #2847D7;
+}
+.button-json-selected:active {
+    color: white;
+    border-color: white;
+    background: #B828D7;
 }
 
 .logo-image {
@@ -55,14 +122,15 @@ body {
     float: left;
     font-weight: 800;
     font-size: xx-large;
-    color: #48D728;
     margin-right: 15px;
 }
+/* END OF TOP NAV BAR */
 
+/* INPUT FORM AND THEIR CHANGES */
 .input-form {
     display: grid;
     grid-row-gap: 6px;
-    grid-template-columns: 20% auto;
+    grid-template-columns: 20% 50%;
     grid-column-gap: 5px;
     
     margin-right: 20%;
@@ -75,6 +143,7 @@ body {
 
 #input-lang {
     max-width: 150px;
+    padding: 7px 20px;
 }
 
 #dropdown-int {
@@ -102,21 +171,33 @@ body {
     right: 0px;
 }
 
-.top-nav {
-    padding: auto;
-    border: 2px solid purple;
-}
-.get-json-button {
+.view-nav-button {
     font-size: larger;
     padding: 10px;
     margin-top: 10px;
     margin-left: 20%;
-    border: 4px solid black;
     border-radius: 15px;
 }
 
+.get-json-button {
+    border: 4px solid black;
+}
+
 .get-json-button:hover {
-    border: 4px solid #9FD728;
-    color: #9FD728;
-    background-color: rgb(0, 0, 0);
+    border: 4px solid #6028D7;
+    color: #6028D7;
+    background-color: white;
+}
+
+/** Removing arrows from the input=number */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

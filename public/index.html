@@ -11,9 +11,15 @@
     <div class="top-nav-bar top-xml-selected">
       <img src="./img/kitty-logo.png" alt="Frost Kitty" class="logo-image" />
       <label class="logo-title">frost<br />kitty</label>
-      <button class="top-nav-btn" id="view-XML-button">XML</button>
-      <button class="top-nav-btn" id="view-JSON-button">JSON</button>
-      <button class="top-nav-btn" id="view-CSV-button">CSV</button>
+      <button class="top-nav-btn button-xml-selected" id="view-XML-button">
+        XML
+      </button>
+      <button class="top-nav-btn button-xml-selected" id="view-JSON-button">
+        JSON
+      </button>
+      <button class="top-nav-btn button-xml-selected" id="view-CSV-button">
+        CSV
+      </button>
     </div>
     <div class="board">
       <!-- shopname: input -->
@@ -23,34 +29,48 @@
       <!-- gtin: input -->
       <!-- icecat ID: input -->
       <div class="input-form">
-        <label class="json-only" for="shopname">Shopname</label>
-        <input        
+        <label class='input-form-label' for="shopname">Username</label>
+        <input
           type="text"
           id="input-shopname"
-          class="json-only"
           name="shopname"
           placeholder="openicecat-live"
+          class="input-form-field"
           required
         />
+        <label class="input-form-label xml-csv-only" for="password">Password</label>
+        <div id="password-wrapping" class="xml-csv-only">
+        <input
+          type="password"
+          id="input-shopname"
+          name="password"
+          class="input-form-field"
+        />
+        <button id="show-password-btn">👀</button>
+      </div>
+        <label for="app-key" class="input-form-label json-only">App-key</label>
+        <input
+          type="text"
+          class="input-form-field json-only"
+          id="input-app-key"
+          name="app-key"
+        />
 
-        <label for="app-key" class="json-only">App-key</label>
-        <input type="text" class="json-only" id="input-app-key" name="app-key" />
+        <label for="brand" class="input-form-label">Brand</label>
+        <input type="text" id="input-brand" name="brand" class="input-form-field" />
 
-        <label for="brand">Brand</label>
-        <input type="text" id="input-brand" name="brand" />
+        <label for="mpn" class="input-form-label">MPN</label>
+        <input type="text" id="input-mpn" name="mpn" class="input-form-field"/>
 
-        <label for="mpn">MPN</label>
-        <input type="text" id="input-mpn" name="mpn" />
+        <label for="icecat-id" class="input-form-label">Icecat ID</label>
+        <input type="number" id="input-icecat-id" name="icecat-id" class="input-form-field"/>
 
-        <label for="icecat-id">Icecat ID</label>
-        <input type="number" id="input-icecat-id" name="icecat-id" />
+        <label for="gtin" class="input-form-label">GTIN</label>
+        <input type="number" maxlength="14" id="input-gtin" name="gtin" class="input-form-field"/>
 
-        <label for="gtin">GTIN</label>
-        <input type="number" id="input-gtin" name="gtin" />
-
-        <label for="lang">Language</label>
+        <label for="lang" class="input-form-label">Language</label>
         <select name="lang" id="input-lang">
-          <option class="xml-only" value="INT">🌏 International</option>
+          <option class="xml-csv-only" value="INT">🌏 International</option>
           <optgroup label="Europe">
             <option selected="selected" value="EN">🇬🇧 English</option>
             <option value="NL">🇳🇱 Dutch</option>
@@ -152,7 +172,7 @@
               Image, EssentialInfo, MarketingText, Variants, BulletPoints
               ReasonsToBuy, GeneralInfo, Videos, Tours3d, Manuals, FeatureGroups
               Reviews -->
-              
+
             <button id="granular-remove-all">❌</button>
             <div>
               <input
@@ -311,18 +331,29 @@
             <button id="granular-select-all">Select All</button>
           </fieldset>
         </div>
-        <button class="get-json-button">Get JSON</button>
+
+        <button class="get-json-button view-nav-button">Get JSON</button>
+
         <div class="view-json-related">
           <h2>See also:</h2>
-            <a href="https://iceclog.com/manuals-editorial-rules-for-product-data-sheets/">
-              Editorial Rules Around the Production of Icecat Product Data-Sheets
-            </a>
+          <a
+            href="https://iceclog.com/manuals-editorial-rules-for-product-data-sheets/"
+          >
+            Editorial Rules Around the Production of Icecat Product Data-Sheets
+          </a>
         </div>
       </div>
 
-      <div class="view-xml xml-only"></div>
+      <div class="view-xml xml-only">
+        <div id='xml-outputRadioButton'>
+        <input type="radio" id="productxml" name="xml-output" value="productxml" />
+        <label for="productxml">ProductXML</label>
+        <input type="radio" id="metaxml" name="xml-output" value="metaxml" />
+        <label for="metaxml">MetaXML</label>
+        </div>
+        <button class="get-xml-button view-nav-button">Get XML</button>
+      </div>
       <div class="view-csv csv-only"></div>
-
     </div>
 
     <script src="./js/app.js"></script>
