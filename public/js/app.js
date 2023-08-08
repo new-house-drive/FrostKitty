@@ -153,7 +153,7 @@ function constructJSONLink(
   shopname = shopname || "openicecat-live";
   let url = DOMAIN + `shopname=${shopname}&`;
 
-  if (appkey) url += `app-key=${appkey}&`;
+  if (appkey) url += `app_key=${appkey}&`;
   if (icecat_id) url += `icecat_id=${icecat_id}&`;
   if (gtin) url += `GTIN=${gtin}&`;
   if (brand) url += `Brand=${brand}&`;
