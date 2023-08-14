@@ -11,7 +11,6 @@ document.querySelector("#view-JSON-button").onclick = () => {
   createJSONview();
 };
 
-
 //* Behaviour on top-nav XML button clicked.
 // Also default view onload
 function createDefaultXMLview() {
@@ -49,6 +48,7 @@ document.querySelector("#get-xml-button").onclick = () => {
   const inputMPN = document.getElementById("input-mpn").value;
   const inputGTIN = document.getElementById("input-gtin").value;
 
+
   // Product Identifiers Wrong Condition
   if (!inputIcecatID && !inputGTIN) {
     if (!inputMPN || !inputBrand) {
@@ -56,16 +56,64 @@ document.querySelector("#get-xml-button").onclick = () => {
       return;
     }
   }
+
+  constructXMLs3Link(
+    // credentials
+    inputShopname,
+    inputPassword, 
+    inputLang,
+    // product identifiers
+    inputIcecatID,
+    inputBrand,
+    inputMPN,
+    inputGTIN,
+    // request conditions
+    // output,
+    1,
+    'XML'
+    );
 };
 
-document.querySelector("#show-password-btn").onclick = () => {
-  let inputPassword = document.querySelector('#input-password')
-  if (inputPassword.type === 'password') {
-    inputPassword.type = 'text'
-    return
+function constructXMLs3Link(
+  shopname,
+  password,
+  language,
+  id,
+  brand,
+  mpn,
+  gtin,
+  output,
+  format
+) {
+
+  let domain = "https://data.icecat.biz/xml_s3/xml_server3.cgi?";
+  let url;
+  if (shopname && password) {
+    domain = `https://${shopname}:${password}@data.icecat.biz/xml_s3/xml_server3.cgi?`
   }
-  inputPassword.type = 'password'
+  
+  url = domain + `lang=${language}&`
+
+  if (id) url += `icecat_id=${id}&`
+  if (brand) url += `vendor=${brand}&`
+  if (mpn) url += `prod_id=${mpn}&`
+  if (gtin) url += `ean_upc=${gtin}&`
+
+  if (format === 'XML') url += 'output=productxml'
+
+
+  console.log(url)
+
 }
+
+document.querySelector("#show-password-btn").onclick = () => {
+  let inputPassword = document.querySelector("#input-password");
+  if (inputPassword.type === "password") {
+    inputPassword.type = "text";
+    return;
+  }
+  inputPassword.type = "password";
+};
 
 //* Behaviour on top-nav JSON button clicked!
 function createJSONview() {
@@ -87,8 +135,8 @@ function createJSONview() {
   for (let div of jsonOnlyDivsList) div.style.display = "inherit";
 
   // INT language fix
-  let inputLang = document.querySelector('#input-lang')
-  if (inputLang.value === 'INT') inputLang.selectedIndex = 1
+  let inputLang = document.querySelector("#input-lang");
+  if (inputLang.value === "INT") inputLang.selectedIndex = 1;
 }
 
 //* JSON only buttons behaviour!
