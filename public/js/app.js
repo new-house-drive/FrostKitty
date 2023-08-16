@@ -47,7 +47,12 @@ document.querySelector("#get-xml-button").onclick = () => {
   const inputBrand = document.getElementById("input-brand").value;
   const inputMPN = document.getElementById("input-mpn").value;
   const inputGTIN = document.getElementById("input-gtin").value;
+  // default value
+  let inputXMLOutput;
 
+  for (let radioButton of document.getElementsByName('xml-output')) {
+    if (radioButton.checked) inputXMLOutput = radioButton.id
+  }
 
   // Product Identifiers Wrong Condition
   if (!inputIcecatID && !inputGTIN) {
@@ -57,7 +62,7 @@ document.querySelector("#get-xml-button").onclick = () => {
     }
   }
 
-  constructXMLs3Link(
+  let url = constructXMLs3Link(
     // credentials
     inputShopname,
     inputPassword, 
@@ -68,10 +73,12 @@ document.querySelector("#get-xml-button").onclick = () => {
     inputMPN,
     inputGTIN,
     // request conditions
-    // output,
-    1,
+    inputXMLOutput,
     'XML'
     );
+    
+    window.open(url, "_blank");
+
 };
 
 function constructXMLs3Link(
@@ -98,11 +105,10 @@ function constructXMLs3Link(
   if (brand) url += `vendor=${brand}&`
   if (mpn) url += `prod_id=${mpn}&`
   if (gtin) url += `ean_upc=${gtin}&`
-
-  if (format === 'XML') url += 'output=productxml'
-
-
-  console.log(url)
+  if (format === 'XML') {
+    url += `output=${output}`
+    return url
+  }
 
 }
 
