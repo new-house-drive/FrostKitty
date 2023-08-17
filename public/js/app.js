@@ -11,6 +11,29 @@ document.querySelector("#view-JSON-button").onclick = () => {
   createJSONview();
 };
 
+
+document.querySelector('#view-CSV-button').onclick = () => {
+  const topNavBar = document.querySelector(".top-nav-bar");
+  updateElementClassName(topNavBar, "top-csv-selected");
+
+  const topButtonsList = document.querySelectorAll(".top-nav-btn");
+  for (let button of topButtonsList) {
+    updateElementClassName(button, "button-csv-selected");
+  }
+
+  
+  const xmlCsvOnlyDivsList = document.querySelectorAll(".xml-csv-only");
+  for (let div of xmlCsvOnlyDivsList) div.style.display = "inherit";
+  const csvOnlyDivsList = document.querySelectorAll(".csv-only");
+  for (let div of csvOnlyDivsList) div.style.display = "inherit";
+
+  // Hiding all JSON only and XML only options
+  const jsonOnlyDivsList = document.querySelectorAll(".json-only");
+  for (let div of jsonOnlyDivsList) div.style.display = "none";
+  const xmlOnlyDivsList = document.querySelectorAll(".xml-only");
+  for (let div of xmlOnlyDivsList) div.style.display = "none";
+}
+
 //* Behaviour on top-nav XML button clicked.
 // Also default view onload
 function createDefaultXMLview() {
@@ -33,6 +56,8 @@ function createDefaultXMLview() {
   // Hiding all JSON only and CSV only options
   const jsonOnlyDivsList = document.querySelectorAll(".json-only");
   for (let div of jsonOnlyDivsList) div.style.display = "none";
+  const csvOnlyDivsList = document.querySelectorAll(".csv-only");
+  for (let div of csvOnlyDivsList) div.style.display = "none";
 }
 
 //* XML only buttons behaviour!
@@ -67,11 +92,13 @@ document.querySelector("#get-xml-button").onclick = () => {
     inputShopname,
     inputPassword, 
     inputLang,
+
     // product identifiers
     inputIcecatID,
     inputBrand,
     inputMPN,
     inputGTIN,
+
     // request conditions
     inputXMLOutput,
     'XML'
@@ -80,6 +107,42 @@ document.querySelector("#get-xml-button").onclick = () => {
     window.open(url, "_blank");
 
 };
+
+
+document.querySelector("#get-xml-fo-button").onclick = () => {
+  const inputIcecatID = document.getElementById("input-icecat-id").value;
+  const inputShopname = document.getElementById("input-shopname").value;
+  const inputPassword = document.getElementById("input-password").value;
+  const inputLang = document.getElementById("input-lang").value;
+
+  if (!inputIcecatID){
+    alert('You must enter ID for this request!💀')
+    return
+  }
+
+  let request = constructXMLFOLink(
+    inputShopname, 
+    inputPassword, 
+    inputIcecatID, 
+    inputLang
+    )
+  window.open(request, "_blank")
+}
+
+function constructXMLFOLink(username, password, id, lang, relations) {
+  // "https://icecat.biz/en/xml?productId=21298166"
+  let url;
+  let domain = "https://icecat.biz/";
+  if (username && password) {
+    domain = `https://${username}:${password}@icecat.biz/`
+  }
+
+  url = domain + lang + '/xml?';
+  url += `productId=${id}`
+
+  return url;
+
+}
 
 function constructXMLs3Link(
   shopname,
@@ -136,6 +199,8 @@ function createJSONview() {
   for (let div of xmlOnlyDivsList) div.style.display = "none";
   const xmlCSVOnlyDivsList = document.querySelectorAll(".xml-csv-only");
   for (let div of xmlCSVOnlyDivsList) div.style.display = "none";
+  const csvOnlyDivsList = document.querySelectorAll(".csv-only");
+  for (let div of csvOnlyDivsList) div.style.display = "none";
 
   const jsonOnlyDivsList = document.querySelectorAll(".json-only");
   for (let div of jsonOnlyDivsList) div.style.display = "inherit";
@@ -241,6 +306,10 @@ function getGranularOptionsList() {
 
   return granularOptionsList;
 }
+
+//* CSV functions
+
+
 
 //* HELPER FUNCTIONS
 //! BY defaulf deletes 2nd class for the sake of simplicity!
