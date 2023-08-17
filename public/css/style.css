@@ -3,7 +3,8 @@ body {
 }
 /* COMMON FOR ALL VIEWS */
 .board {
-    width: 60%;
+    position: relative;
+    width: 30%;
     padding: 30px;
 }
 /** Top navigation bar */
@@ -31,8 +32,9 @@ body {
 }
 
 .top-csv-selected {
-    background-color: #289fd7;
-    color: #D76028;
+    background: rgb(101,246,83);
+    background: linear-gradient(67deg, rgba(101,246,83,1) 0%, rgba(3,243,255,1) 100%); 
+    color: black;
 }
 
 .top-nav-btn {
@@ -47,7 +49,7 @@ body {
     font-size: larger;
     padding: 10px;
     margin-top: 10px;
-    margin-left: 20%;
+    /* margin-left: 20%; */
     border-radius: 15px;
 }
 
@@ -65,6 +67,13 @@ body {
     padding: 8px 0px;
 }
 /* DEFAULT/XML VIEW */
+#button-board-xml {
+    margin-left: -30px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    width: 100%;
+    background: rgba(255,0,122,1);
+}
 .button-xml-selected {
     background: rgba(255,0,122,1);
     border: 2px solid rgba(255,0,122,1);
@@ -95,7 +104,9 @@ body {
 }
 
 #xml-outputRadioButton {
-    margin: 10px 90px;
+    padding-left: 80px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 /* JSON VIEW */
@@ -117,6 +128,34 @@ body {
     background: linear-gradient(211deg, rgba(0,14,144,1) 0%, rgba(0,242,255,1) 100%); ;
 }
 
+/* CSV selected */
+.button-csv-selected {
+    background-color: rgb(101,246,83);
+    border: 2px solid rgb(101,246,83);
+    color: black;
+}
+.button-csv-selected:hover {
+    background-color: black;
+    border: 2px solid black;
+    color: rgb(101,246,83);
+}
+.button-csv-selected:active {
+    background: rgb(41,101,33);
+    background: radial-gradient(circle, rgba(41,101,33,1) 0%, rgba(0,106,111,1) 100%); 
+    color: rgb(101,246,83);
+    border: 1px solid rgb(101,246,83);
+}
+
+#button-board-csv {
+    margin-left: -30px;
+    margin-top: 10px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+
+    width: 100%;
+    background: black;
+}
+
 .logo-image {
     float: left;
     margin: 5px;
@@ -135,7 +174,7 @@ body {
 .input-form {
     display: grid;
     grid-row-gap: 6px;
-    grid-template-columns: 80px 300px 25px;
+    grid-template-columns: 15% 60% 5%;
     grid-column-gap: 5px;
     
 
@@ -145,6 +184,7 @@ body {
 #input-lang {
     max-width: 300px;
     padding: 3px 20px;
+    grid-column: auto / span 2;
 }
 
 #dropdown-int {
@@ -155,7 +195,6 @@ body {
 .granular-call-form-container {
     margin-top: 10px;
     margin-left: 20px;
-    max-width: 50%;
 }
 
 .granular-call-form {
@@ -170,14 +209,6 @@ body {
     position: absolute;
     top: -11px;
     right: 0px;
-}
-
-.view-nav-button {
-    font-size: larger;
-    padding: 10px;
-    margin-top: 10px;
-    margin-left: 20%;
-    border-radius: 15px;
 }
 
 /** Removing arrows from the input=number */
