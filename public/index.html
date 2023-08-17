@@ -159,6 +159,15 @@
             <option value="EN_ZA">🇿🇦 English (South Africa)</option>
           </optgroup>
         </select>
+        <label class="input-form-label xml-only" for="relations">Relations</label>
+        <input
+          title="For FO request only."
+          type="number"
+          id="input-relations"
+          name="relations"
+          class="input-form-field xml-only"
+          placeholder="500"
+        />
       </div>
 
       <div class="view-json json-only">
@@ -349,9 +358,18 @@
         <input type="radio" id="metaxml" name="xml-output"/>
         <label for="metaxml">MetaXML</label>
         </div>
-        <button id='get-xml-button' class="button-xml-selected view-nav-button">Get XML</button>
+        <div id="button-board-xml">
+          <button id='get-xml-button' class="button-xml-selected view-nav-button">XML_s3 request</button>
+          <button id='get-xml-fo-button' class="button-xml-selected view-nav-button">FO request</button>
+          <button id="get-xml-export-button" class="button-xml-selected view-nav-button">Export request</button>
+        </div>
       </div>
-      <div class="view-csv csv-only"></div>
+      <div class="view-csv csv-only">
+        <div id="button-board-csv">
+          <button id='get-csv-button' class="button-csv-selected view-nav-button">CSV request</button>
+        </div>
+
+      </div>
     </div>
 
     <script src="./js/app.js"></script>
