@@ -14,7 +14,7 @@ body {
     width: 100%;
     min-height: 80px;
     position: sticky;
-    border: 2px solid black;
+    border: 3px solid black;
     padding-left: 30px;
     
 }
@@ -113,7 +113,7 @@ body {
 .button-json-selected {
     background-color: rgba(66,54,255,1);
     color: white;
-    border: 2px solid white;
+    border: 2px solid rgba(66,54,255,1);
 }
 .button-json-selected:hover {
     background: rgb(249,249,255);
