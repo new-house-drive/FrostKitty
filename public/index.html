@@ -29,7 +29,10 @@
       <!-- gtin: input -->
       <!-- icecat ID: input -->
       <div class="input-form">
-        <button id="input-form-clear-all"></button>
+
+        <button id="input-clear-all-button">Clear all</button>
+
+
         <label class='input-form-label' for="shopname">Username</label>
         <input
           type="text"
@@ -181,7 +184,7 @@
               ReasonsToBuy, GeneralInfo, Videos, Tours3d, Manuals, FeatureGroups
               Reviews -->
 
-            <button id="granular-remove-all">❌</button>
+            <button id="granular-remove-all">Clear</button>
             <div>
               <input
                 type="checkbox"
@@ -340,8 +343,9 @@
           </fieldset>
         </div>
 
+        <div class="button-board" id="button-board-json">
         <button id="get-json-button" class="button-json-selected view-nav-button">Get JSON</button>
-
+        </div>
         <div class="view-json-related">
           <h2>See also:</h2>
           <a
@@ -359,14 +363,14 @@
         <input type="radio" id="metaxml" name="xml-output"/>
         <label for="metaxml">MetaXML</label>
         </div>
-        <div id="button-board-xml">
+        <div class="button-board" id="button-board-xml">
           <button id='get-xml-button' class="button-xml-selected view-nav-button">XML_s3 request</button>
           <button id='get-xml-fo-button' class="button-xml-selected view-nav-button">FO request</button>
-          <button id="get-xml-export-button" class="button-xml-selected view-nav-button">Export request</button>
+          <!-- <button id="get-xml-export-button" class="button-xml-selected view-nav-button">Export request</button> -->
         </div>
       </div>
       <div class="view-csv csv-only">
-        <div id="button-board-csv">
+        <div class="button-board" id="button-board-csv">
           <button id='get-csv-button' class="button-csv-selected view-nav-button">CSV request</button>
         </div>
 
