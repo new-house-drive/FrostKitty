@@ -109,6 +109,10 @@ body {
     padding-bottom: 10px;
 }
 
+#input-form-clear-all {
+    position: absolute;
+}
+
 /* JSON VIEW */
 .button-json-selected {
     background-color: rgba(66,54,255,1);
