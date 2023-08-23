@@ -1,2 +1,6 @@
 # FrostKitty
-Scripts I'm using to work with Icecat, includes XML data.
+
+Encyclopedia Icecat
+
+Currently has a tool to view API for different Export formats. /roadmap endpoint to check current issues.
+ 
