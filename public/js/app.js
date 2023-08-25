@@ -60,6 +60,16 @@ function createDefaultXMLview() {
   for (let div of csvOnlyDivsList) div.style.display = "none";
 }
 
+//* Common buttons for all views
+document.querySelector("#input-clear-all-button").onclick = () => {
+  let inputsList = document.querySelectorAll('.input-form-field')
+
+  for (let input of inputsList) {
+    // console.log(input)
+    input.value = ''
+  }
+}
+
 //* XML only buttons behaviour!
 document.querySelector("#get-xml-button").onclick = () => {
   // Essential information
