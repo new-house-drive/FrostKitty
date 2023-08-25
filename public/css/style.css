@@ -46,11 +46,12 @@ body {
 }
 
 .view-nav-button {
-    font-size: larger;
+
     padding: 10px;
     margin-top: 10px;
     /* margin-left: 20%; */
-    border-radius: 15px;
+    width: 130px;
+    min-height: 40px;
 }
 
 .input-form-field {
@@ -66,12 +67,15 @@ body {
 .input-form-label {
     padding: 8px 0px;
 }
-/* DEFAULT/XML VIEW */
-#button-board-xml {
-    margin-left: -30px;
+
+.button-board {
+    margin-top: 15px;
     padding-left: 20px;
     padding-bottom: 10px;
     width: 100%;
+}
+/* DEFAULT/XML VIEW */
+#button-board-xml {
     background: rgba(255,0,122,1);
 }
 .button-xml-selected {
@@ -109,9 +113,7 @@ body {
     padding-bottom: 10px;
 }
 
-#input-form-clear-all {
-    position: absolute;
-}
+
 
 /* JSON VIEW */
 .button-json-selected {
@@ -130,6 +132,9 @@ body {
     border-color: white;
     background: rgb(0,14,144);
     background: linear-gradient(211deg, rgba(0,14,144,1) 0%, rgba(0,242,255,1) 100%); ;
+}
+#button-board-json {
+    background-color: rgba(66,54,255,1);
 }
 
 /* CSV selected */
@@ -157,7 +162,7 @@ body {
     padding-bottom: 10px;
 
     width: 100%;
-    background: black;
+    background: rgb(101,246,83);
 }
 
 .logo-image {
@@ -183,6 +188,14 @@ body {
     
 
     text-align: right;
+    position: relative;
+}
+
+#input-clear-all-button {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    padding: 5px;
 }
 
 #input-lang {
@@ -197,16 +210,15 @@ body {
 
 
 .granular-call-form-container {
-    margin-top: 10px;
-    margin-left: 20px;
+    margin-top: 20px;
+    width: 100%;
+    /* margin-left: 20px; */
 }
 
 .granular-call-form {
     position: relative;
     display: grid;
     grid-template-columns: auto auto auto;
-    
-    margin-right: 10%;
 }
 
 #granular-remove-all {
