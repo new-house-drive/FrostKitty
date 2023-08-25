@@ -11,8 +11,7 @@ document.querySelector("#view-JSON-button").onclick = () => {
   createJSONview();
 };
 
-
-document.querySelector('#view-CSV-button').onclick = () => {
+document.querySelector("#view-CSV-button").onclick = () => {
   const topNavBar = document.querySelector(".top-nav-bar");
   updateElementClassName(topNavBar, "top-csv-selected");
 
@@ -21,7 +20,6 @@ document.querySelector('#view-CSV-button').onclick = () => {
     updateElementClassName(button, "button-csv-selected");
   }
 
-  
   const xmlCsvOnlyDivsList = document.querySelectorAll(".xml-csv-only");
   for (let div of xmlCsvOnlyDivsList) div.style.display = "inherit";
   const csvOnlyDivsList = document.querySelectorAll(".csv-only");
@@ -32,7 +30,7 @@ document.querySelector('#view-CSV-button').onclick = () => {
   for (let div of jsonOnlyDivsList) div.style.display = "none";
   const xmlOnlyDivsList = document.querySelectorAll(".xml-only");
   for (let div of xmlOnlyDivsList) div.style.display = "none";
-}
+};
 
 //* Behaviour on top-nav XML button clicked.
 // Also default view onload
@@ -60,16 +58,6 @@ function createDefaultXMLview() {
   for (let div of csvOnlyDivsList) div.style.display = "none";
 }
 
-//* Common buttons for all views
-document.querySelector("#input-clear-all-button").onclick = () => {
-  let inputsList = document.querySelectorAll('.input-form-field')
-
-  for (let input of inputsList) {
-    // console.log(input)
-    input.value = ''
-  }
-}
-
 //* XML only buttons behaviour!
 document.querySelector("#get-xml-button").onclick = () => {
   // Essential information
@@ -85,8 +73,8 @@ document.querySelector("#get-xml-button").onclick = () => {
   // default value
   let inputXMLOutput;
 
-  for (let radioButton of document.getElementsByName('xml-output')) {
-    if (radioButton.checked) inputXMLOutput = radioButton.id
+  for (let radioButton of document.getElementsByName("xml-output")) {
+    if (radioButton.checked) inputXMLOutput = radioButton.id;
   }
 
   // Product Identifiers Wrong Condition
@@ -100,7 +88,7 @@ document.querySelector("#get-xml-button").onclick = () => {
   let url = constructXMLs3Link(
     // credentials
     inputShopname,
-    inputPassword, 
+    inputPassword,
     inputLang,
 
     // product identifiers
@@ -111,13 +99,11 @@ document.querySelector("#get-xml-button").onclick = () => {
 
     // request conditions
     inputXMLOutput,
-    'XML'
-    );
-    
-    window.open(url, "_blank");
+    "XML"
+  );
 
+  window.open(url, "_blank");
 };
-
 
 document.querySelector("#get-xml-fo-button").onclick = () => {
   const inputIcecatID = document.getElementById("input-icecat-id").value;
@@ -125,33 +111,32 @@ document.querySelector("#get-xml-fo-button").onclick = () => {
   const inputPassword = document.getElementById("input-password").value;
   const inputLang = document.getElementById("input-lang").value;
 
-  if (!inputIcecatID){
-    alert('You must enter ID for this request!💀')
-    return
+  if (!inputIcecatID) {
+    alert("You must enter ID for this request!💀");
+    return;
   }
 
   let request = constructXMLFOLink(
-    inputShopname, 
-    inputPassword, 
-    inputIcecatID, 
+    inputShopname,
+    inputPassword,
+    inputIcecatID,
     inputLang
-    )
-  window.open(request, "_blank")
-}
+  );
+  window.open(request, "_blank");
+};
 
 function constructXMLFOLink(username, password, id, lang, relations) {
   // "https://icecat.biz/en/xml?productId=21298166"
   let url;
   let domain = "https://icecat.biz/";
   if (username && password) {
-    domain = `https://${username}:${password}@icecat.biz/`
+    domain = `https://${username}:${password}@icecat.biz/`;
   }
 
-  url = domain + lang + '/xml?';
-  url += `productId=${id}`
+  url = domain + lang + "/xml?";
+  url += `productId=${id}`;
 
   return url;
-
 }
 
 function constructXMLs3Link(
@@ -165,24 +150,22 @@ function constructXMLs3Link(
   output,
   format
 ) {
-
   let domain = "https://data.icecat.biz/xml_s3/xml_server3.cgi?";
   let url;
   if (shopname && password) {
-    domain = `https://${shopname}:${password}@data.icecat.biz/xml_s3/xml_server3.cgi?`
-  }
-  
-  url = domain + `lang=${language}&`
-
-  if (id) url += `icecat_id=${id}&`
-  if (brand) url += `vendor=${brand}&`
-  if (mpn) url += `prod_id=${mpn}&`
-  if (gtin) url += `ean_upc=${gtin}&`
-  if (format === 'XML') {
-    url += `output=${output}`
-    return url
+    domain = `https://${shopname}:${password}@data.icecat.biz/xml_s3/xml_server3.cgi?`;
   }
 
+  url = domain + `lang=${language}&`;
+
+  if (id) url += `icecat_id=${id}&`;
+  if (brand) url += `vendor=${brand}&`;
+  if (mpn) url += `prod_id=${mpn}&`;
+  if (gtin) url += `ean_upc=${gtin}&`;
+
+  if (format === "XML") url += `output=${output}`;
+  if (format === "CSV") url += `output=productcsv`;
+  return url;
 }
 
 document.querySelector("#show-password-btn").onclick = () => {
@@ -319,7 +302,32 @@ function getGranularOptionsList() {
 
 //* CSV functions
 
+document.querySelector("#get-csv-button").onclick = () => {
+  // Essential information
+  const inputShopname = document.getElementById("input-shopname").value;
+  const inputPassword = document.getElementById("input-password").value;
+  const inputLang = document.getElementById("input-lang").value;
 
+  // Product Identifiers
+  const inputIcecatID = document.getElementById("input-icecat-id").value;
+  const inputBrand = document.getElementById("input-brand").value;
+  const inputMPN = document.getElementById("input-mpn").value;
+  const inputGTIN = document.getElementById("input-gtin").value;
+
+  let url = constructXMLs3Link(
+    inputShopname,
+    inputPassword,
+    inputLang,
+    inputIcecatID,
+    inputBrand,
+    inputMPN,
+    inputGTIN,
+    "productcsv",
+    "CSV"
+  );
+
+  window.open(url, "_blank");
+};
 
 //* HELPER FUNCTIONS
 //! BY defaulf deletes 2nd class for the sake of simplicity!
@@ -333,3 +341,13 @@ function updateElementClassName(element, newClassName) {
   }
   return element;
 }
+
+//* Common buttons for all views
+document.querySelector("#input-clear-all-button").onclick = () => {
+  let inputsList = document.querySelectorAll(".input-form-field");
+
+  for (let input of inputsList) {
+    // console.log(input)
+    input.value = "";
+  }
+};
