@@ -29,11 +29,9 @@
       <!-- gtin: input -->
       <!-- icecat ID: input -->
       <div class="input-form">
-
         <button id="input-clear-all-button">Clear all</button>
 
-
-        <label class='input-form-label' for="shopname">Username</label>
+        <label class="input-form-label" for="shopname">Username</label>
         <input
           type="text"
           id="input-shopname"
@@ -42,14 +40,16 @@
           class="input-form-field"
           required
         />
-        <label class="input-form-label xml-csv-only" for="password">Password</label>
+        <label class="input-form-label xml-csv-only" for="password"
+          >Password</label
+        >
         <input
           type="password"
           id="input-password"
           name="password"
           class="input-form-field xml-csv-only"
         />
-        <button class='xml-csv-only' id="show-password-btn">👀</button>
+        <button class="xml-csv-only" id="show-password-btn">👀</button>
         <label for="app-key" class="input-form-label json-only">App-key</label>
         <input
           type="text"
@@ -59,16 +59,32 @@
         />
 
         <label for="brand" class="input-form-label">Brand</label>
-        <input type="text" id="input-brand" name="brand" class="input-form-field" />
+        <input
+          type="text"
+          id="input-brand"
+          name="brand"
+          class="input-form-field"
+        />
 
         <label for="mpn" class="input-form-label">MPN</label>
-        <input type="text" id="input-mpn" name="mpn" class="input-form-field"/>
+        <input type="text" id="input-mpn" name="mpn" class="input-form-field" />
 
         <label for="icecat-id" class="input-form-label">Icecat ID</label>
-        <input type="number" id="input-icecat-id" name="icecat-id" class="input-form-field"/>
+        <input
+          type="number"
+          id="input-icecat-id"
+          name="icecat-id"
+          class="input-form-field"
+        />
 
         <label for="gtin" class="input-form-label">GTIN</label>
-        <input type="number" maxlength="14" id="input-gtin" name="gtin" class="input-form-field"/>
+        <input
+          type="number"
+          maxlength="14"
+          id="input-gtin"
+          name="gtin"
+          class="input-form-field"
+        />
 
         <label for="lang" class="input-form-label">Language</label>
         <select name="lang" id="input-lang">
@@ -334,7 +350,12 @@
           </fieldset>
         </div>
 
-        <button id="get-json-button" class="button-json-selected view-nav-button">Get JSON</button>
+        <button
+          id="get-json-button"
+          class="button-json-selected view-nav-button"
+        >
+          Get JSON
+        </button>
         <div class="view-json-related">
           <h2>See also:</h2>
           <a
@@ -346,19 +367,42 @@
       </div>
 
       <div class="view-xml xml-only">
-        <div id='xml-outputRadioButton'>
-        <input type="radio" id="productxml" name="xml-output" checked="checked"/>
-        <label for="productxml">ProductXML</label>
-        <input type="radio" id="metaxml" name="xml-output"/>
-        <label for="metaxml">MetaXML</label>
+        <div id="xml-outputRadioButton">
+          <input
+            type="radio"
+            id="productxml"
+            name="xml-output"
+            checked="checked"
+          />
+          <label for="productxml">ProductXML</label>
+          <input type="radio" id="metaxml" name="xml-output" />
+          <label for="metaxml">MetaXML</label>
         </div>
-          <button id='get-xml-button' class="button-xml-selected view-nav-button">XML_s3 request</button>
-          <button id='get-xml-fo-button' class="button-xml-selected view-nav-button">FO request</button>
-          <!-- <button id="get-xml-export-button" class="button-xml-selected view-nav-button">Export request</button> -->
+        <button id="get-xml-button" class="button-xml-selected view-nav-button">
+          Get XML_s3
+        </button>
+        <button
+          id="get-xml-fo-button"
+          class="button-xml-selected view-nav-button"
+        >
+          Get XML by ID
+        </button>
+        <!-- <button id="get-xml-export-button" class="button-xml-selected view-nav-button">Export request</button> -->
       </div>
       <div class="view-csv csv-only">
-          <button id='get-csv-button' class="button-csv-selected view-nav-button">CSV request</button>
+        <button id="get-csv-button" class="button-csv-selected view-nav-button">
+          Get CSV_s3
+        </button>
+      </div>
+    </div>
 
+    <div class="xml-reference-files-board xml-only">
+      <h3 title="">Index Files:</h3>
+      <div id="xml-index-files-table">
+        <a href="#">Open files.index.xml</a>
+        <a href="#">Full files.index.xml</a>
+        <a href="#">Open daily.index.xml</a>
+        <a href="#">Full daily.index.xml</a>
       </div>
     </div>
 
