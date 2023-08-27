@@ -60,21 +60,24 @@ function createDefaultXMLview() {
 
 //* XML only buttons behaviour!
 document.querySelector("#get-xml-button").onclick = () => {
-  let userInput = createUserInput('XML')
-  
+  let userInput = createUserInput("XML");
 
   // Product Identifiers Wrong Condition
-  if ((!userInput.id && !userInput.gtin) && (!userInput.mpn || !userInput.brand)) {
-      alert("Please use GTIN, ID or Brand + MPN pair to get the product");
-      return;
-    }
+  if (
+    !userInput.id &&
+    !userInput.gtin &&
+    (!userInput.mpn || !userInput.brand)
+  ) {
+    alert("Please use GTIN, ID or Brand + MPN pair to get the product");
+    return;
+  }
 
   let url = constructXMLs3Link(userInput);
   window.open(url, "_blank");
 };
 
 document.querySelector("#get-xml-fo-button").onclick = () => {
-  let userInput = createUserInput("XML")
+  let userInput = createUserInput("XML");
   if (!userInput.id) {
     alert("You must enter ID for this request!💀");
     return;
@@ -85,7 +88,6 @@ document.querySelector("#get-xml-fo-button").onclick = () => {
 };
 
 function constructXMLFOLink(userInput) {
-  
   let domain = "https://icecat.biz/";
 
   if (userInput.shopname && userInput.password) {
@@ -98,7 +100,7 @@ function constructXMLFOLink(userInput) {
   return url;
 }
 
-function constructXMLs3Link (userInput) {
+function constructXMLs3Link(userInput) {
   let domain = "https://data.icecat.biz/xml_s3/xml_server3.cgi?";
   if (userInput.shopname && userInput.password) {
     domain = `https://${userInput.shopname}:${userInput.password}@data.icecat.biz/xml_s3/xml_server3.cgi?`;
@@ -152,14 +154,17 @@ function createJSONview() {
 
 //* JSON only buttons behaviour!
 document.querySelector("#get-json-button").onclick = () => {
-  let userInput = createUserInput('JSON')
-  
-  if ((!userInput.id && !userInput.gtin) && (!userInput.mpn || !userInput.brand)) {
-      alert("Please use GTIN, ID or Brand + MPN pair to get the product");
-      return;
-    }
-  
-    
+  let userInput = createUserInput("JSON");
+
+  if (
+    !userInput.id &&
+    !userInput.gtin &&
+    (!userInput.mpn || !userInput.brand)
+  ) {
+    alert("Please use GTIN, ID or Brand + MPN pair to get the product");
+    return;
+  }
+
   let url = constructJSONLink(userInput);
   window.open(url, "_blank");
 };
@@ -177,7 +182,7 @@ document.querySelector("#granular-remove-all").onclick = () => {
 // input -> userInput object
 // Checks all the fields and add input as attributes
 // output -> link to Icecat Live JSON
-function constructJSONLink (input) {
+function constructJSONLink(input) {
   const DOMAIN = `https://live.icecat.biz/api?`;
 
   input.shopname = input.shopname || "openicecat-live";
@@ -190,13 +195,13 @@ function constructJSONLink (input) {
   if (input.mpn) url += `ProductCode=${input.mpn}&`;
 
   url += `lang=${input.language}`;
-  url += "&content="
+  url += "&content=";
   console.log("Your link is: " + url);
 
   let granularList = getGranularOptionsList();
-  if (granularList) url+= granularList.toString()
+  if (granularList) url += granularList.toString();
 
-  return url
+  return url;
 }
 
 //* to be used inside constructJSON link
@@ -217,17 +222,16 @@ function getGranularOptionsList() {
 
 //* CSV FUNCTIONS
 document.querySelector("#get-csv-button").onclick = () => {
-  let userInput = createUserInput('CSV')
+  let userInput = createUserInput("CSV");
   let url = constructXMLs3Link(userInput);
 
   window.open(url, "_blank");
 };
 
-
 //* COMMON FUNCTIONS
 document.querySelector("#input-clear-all-button").onclick = () => {
   let inputsList = document.querySelectorAll(".input-form-field");
-  
+
   for (let input of inputsList) input.value = "";
 };
 
@@ -250,7 +254,7 @@ function updateElementClassName(element, newClassName) {
   XML: + password and output
   JSON: + app_key
   CSV: + password and output
-*/ 
+*/
 function createUserInput(type) {
   const inputShopname = document.getElementById("input-shopname").value;
   const inputLang = document.getElementById("input-lang").value;
@@ -260,13 +264,13 @@ function createUserInput(type) {
   const inputGTIN = document.getElementById("input-gtin").value;
 
   let userInput = {
-    "shopname": inputShopname,
-    "language": inputLang,
-    "id": inputIcecatID,
-    "brand": inputBrand,
-    "mpn": inputMPN,
-    "gtin": inputGTIN
-  }
+    shopname: inputShopname,
+    language: inputLang,
+    id: inputIcecatID,
+    brand: inputBrand,
+    mpn: inputMPN,
+    gtin: inputGTIN,
+  };
 
   if (type === "XML" || type === "CSV") {
     userInput.password = document.getElementById("input-password").value;
@@ -279,13 +283,66 @@ function createUserInput(type) {
   }
 
   if (type === "CSV") {
-    userInput.output = 'productcsv'
+    userInput.output = "productcsv";
   }
-
 
   if (type === "JSON") {
     userInput.appkey = document.getElementById("input-app-key").value;
   }
 
-  return userInput
+  return userInput;
+}
+
+function constructLink(type) {
+  if (type === "XML_s3") {
+    return function (userInput) {
+      let domain = "https://data.icecat.biz/xml_s3/xml_server3.cgi?";
+      if (userInput.shopname && userInput.password) {
+        domain = `https://${userInput.shopname}:${userInput.password}@data.icecat.biz/xml_s3/xml_server3.cgi?`;
+      }
+
+      let url = domain + `lang=${userInput.language}&`;
+
+      if (userInput.id) url += `icecat_id=${userInput.id}&`;
+      if (userInput.brand) url += `vendor=${userInput.brand}&`;
+      if (userInput.mpn) url += `prod_id=${userInput.mpn}&`;
+      if (userInput.gtin) url += `ean_upc=${userInput.gtin}&`;
+      if (userInput.output) url += `output=${userInput.output}`;
+
+      return url;
+    };
+  }
+  if (type === "JSON") {
+    return function (userInput) {
+      let domain = "https://data.icecat.biz/xml_s3/xml_server3.cgi?";
+      if (userInput.shopname && userInput.password) {
+        domain = `https://${userInput.shopname}:${userInput.password}@data.icecat.biz/xml_s3/xml_server3.cgi?`;
+      }
+
+      let url = domain + `lang=${userInput.language}&`;
+
+      if (userInput.id) url += `icecat_id=${userInput.id}&`;
+      if (userInput.brand) url += `vendor=${userInput.brand}&`;
+      if (userInput.mpn) url += `prod_id=${userInput.mpn}&`;
+      if (userInput.gtin) url += `ean_upc=${userInput.gtin}&`;
+      if (userInput.output) url += `output=${userInput.output}`;
+
+      return url;
+    };
+  }
+
+  if (type === "XML_by_ID") {
+    return function (userInput) {
+      let domain = "https://icecat.biz/";
+
+      if (userInput.shopname && userInput.password) {
+        domain = `https://${userInput.shopname}:${userInput.password}@icecat.biz/`;
+      }
+
+      let url = domain + userInput.language + "/xml?";
+      url += `productId=${userInput.id}`;
+
+      return url;
+    };
+  }
 }
