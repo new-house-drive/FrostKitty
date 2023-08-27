@@ -72,7 +72,7 @@ document.querySelector("#get-xml-button").onclick = () => {
     return;
   }
 
-  let url = constructXMLs3Link(userInput);
+  let url = constructLink("XML_s3")(userInput);
   window.open(url, "_blank");
 };
 
@@ -83,39 +83,9 @@ document.querySelector("#get-xml-fo-button").onclick = () => {
     return;
   }
 
-  let url = constructXMLFOLink(userInput);
+  let url = constructLink("XML_by_ID")(userInput);
   window.open(url, "_blank");
 };
-
-function constructXMLFOLink(userInput) {
-  let domain = "https://icecat.biz/";
-
-  if (userInput.shopname && userInput.password) {
-    domain = `https://${userInput.shopname}:${userInput.password}@icecat.biz/`;
-  }
-
-  let url = domain + userInput.language + "/xml?";
-  url += `productId=${userInput.id}`;
-
-  return url;
-}
-
-function constructXMLs3Link(userInput) {
-  let domain = "https://data.icecat.biz/xml_s3/xml_server3.cgi?";
-  if (userInput.shopname && userInput.password) {
-    domain = `https://${userInput.shopname}:${userInput.password}@data.icecat.biz/xml_s3/xml_server3.cgi?`;
-  }
-
-  let url = domain + `lang=${userInput.language}&`;
-
-  if (userInput.id) url += `icecat_id=${userInput.id}&`;
-  if (userInput.brand) url += `vendor=${userInput.brand}&`;
-  if (userInput.mpn) url += `prod_id=${userInput.mpn}&`;
-  if (userInput.gtin) url += `ean_upc=${userInput.gtin}&`;
-  if (userInput.output) url += `output=${userInput.output}`;
-
-  return url;
-}
 
 document.querySelector("#show-password-btn").onclick = () => {
   let inputPassword = document.querySelector("#input-password");
@@ -165,7 +135,7 @@ document.querySelector("#get-json-button").onclick = () => {
     return;
   }
 
-  let url = constructJSONLink(userInput);
+  let url = constructLink("JSON")(userInput);
   window.open(url, "_blank");
 };
 
@@ -178,31 +148,6 @@ document.querySelector("#granular-remove-all").onclick = () => {
   const checkboxesList = document.querySelectorAll(".granular-checkbox");
   for (let checkbox of checkboxesList) checkbox.checked = false;
 };
-
-// input -> userInput object
-// Checks all the fields and add input as attributes
-// output -> link to Icecat Live JSON
-function constructJSONLink(input) {
-  const DOMAIN = `https://live.icecat.biz/api?`;
-
-  input.shopname = input.shopname || "openicecat-live";
-  let url = DOMAIN + `shopname=${input.shopname}&`;
-
-  if (input.appkey) url += `app_key=${input.appkey}&`;
-  if (input.id) url += `icecat_id=${input.icecat_id}&`;
-  if (input.gtin) url += `GTIN=${input.gtin}&`;
-  if (input.brand) url += `Brand=${input.brand}&`;
-  if (input.mpn) url += `ProductCode=${input.mpn}&`;
-
-  url += `lang=${input.language}`;
-  url += "&content=";
-  console.log("Your link is: " + url);
-
-  let granularList = getGranularOptionsList();
-  if (granularList) url += granularList.toString();
-
-  return url;
-}
 
 //* to be used inside constructJSON link
 // output [selected, granular, checkboxes]
@@ -223,7 +168,7 @@ function getGranularOptionsList() {
 //* CSV FUNCTIONS
 document.querySelector("#get-csv-button").onclick = () => {
   let userInput = createUserInput("CSV");
-  let url = constructXMLs3Link(userInput);
+  let url = constructLink("XML_s3")(userInput);
 
   window.open(url, "_blank");
 };
@@ -293,6 +238,13 @@ function createUserInput(type) {
   return userInput;
 }
 
+
+// FACTORY FUNCTION FOR ALL TYPES OF REQUESTS
+// TO CREATE A LINK ON USER UI
+//? Options: XML_s3, XML_by_ID, JSON
+// Can be adlusted as many times as required.
+// No Longer we require to create a new function
+// with a new name every button. 
 function constructLink(type) {
   if (type === "XML_s3") {
     return function (userInput) {
