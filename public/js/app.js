@@ -60,111 +60,58 @@ function createDefaultXMLview() {
 
 //* XML only buttons behaviour!
 document.querySelector("#get-xml-button").onclick = () => {
-  // Essential information
-  const inputShopname = document.getElementById("input-shopname").value;
-  const inputPassword = document.getElementById("input-password").value;
-  const inputLang = document.getElementById("input-lang").value;
-
-  // Product Identifiers
-  const inputIcecatID = document.getElementById("input-icecat-id").value;
-  const inputBrand = document.getElementById("input-brand").value;
-  const inputMPN = document.getElementById("input-mpn").value;
-  const inputGTIN = document.getElementById("input-gtin").value;
-  // default value
-  let inputXMLOutput;
-
-  for (let radioButton of document.getElementsByName("xml-output")) {
-    if (radioButton.checked) inputXMLOutput = radioButton.id;
-  }
+  let userInput = createUserInput('XML')
+  
 
   // Product Identifiers Wrong Condition
-  if (!inputIcecatID && !inputGTIN) {
-    if (!inputMPN || !inputBrand) {
+  if ((!userInput.id && !userInput.gtin) && (!userInput.mpn || !userInput.brand)) {
       alert("Please use GTIN, ID or Brand + MPN pair to get the product");
       return;
     }
-  }
 
-  let url = constructXMLs3Link(
-    // credentials
-    inputShopname,
-    inputPassword,
-    inputLang,
-
-    // product identifiers
-    inputIcecatID,
-    inputBrand,
-    inputMPN,
-    inputGTIN,
-
-    // request conditions
-    inputXMLOutput,
-    "XML"
-  );
-
+  let url = constructXMLs3Link(userInput);
   window.open(url, "_blank");
 };
 
 document.querySelector("#get-xml-fo-button").onclick = () => {
-  const inputIcecatID = document.getElementById("input-icecat-id").value;
-  const inputShopname = document.getElementById("input-shopname").value;
-  const inputPassword = document.getElementById("input-password").value;
-  const inputLang = document.getElementById("input-lang").value;
-
-  if (!inputIcecatID) {
+  let userInput = createUserInput("XML")
+  if (!userInput.id) {
     alert("You must enter ID for this request!💀");
     return;
   }
 
-  let request = constructXMLFOLink(
-    inputShopname,
-    inputPassword,
-    inputIcecatID,
-    inputLang
-  );
-  window.open(request, "_blank");
+  let url = constructXMLFOLink(userInput);
+  window.open(url, "_blank");
 };
 
-function constructXMLFOLink(username, password, id, lang, relations) {
-  // "https://icecat.biz/en/xml?productId=21298166"
-  let url;
+function constructXMLFOLink(userInput) {
+  
   let domain = "https://icecat.biz/";
-  if (username && password) {
-    domain = `https://${username}:${password}@icecat.biz/`;
+
+  if (userInput.shopname && userInput.password) {
+    domain = `https://${userInput.shopname}:${userInput.password}@icecat.biz/`;
   }
 
-  url = domain + lang + "/xml?";
-  url += `productId=${id}`;
+  let url = domain + userInput.language + "/xml?";
+  url += `productId=${userInput.id}`;
 
   return url;
 }
 
-function constructXMLs3Link(
-  shopname,
-  password,
-  language,
-  id,
-  brand,
-  mpn,
-  gtin,
-  output,
-  format
-) {
+function constructXMLs3Link (userInput) {
   let domain = "https://data.icecat.biz/xml_s3/xml_server3.cgi?";
-  let url;
-  if (shopname && password) {
-    domain = `https://${shopname}:${password}@data.icecat.biz/xml_s3/xml_server3.cgi?`;
+  if (userInput.shopname && userInput.password) {
+    domain = `https://${userInput.shopname}:${userInput.password}@data.icecat.biz/xml_s3/xml_server3.cgi?`;
   }
 
-  url = domain + `lang=${language}&`;
+  let url = domain + `lang=${userInput.language}&`;
 
-  if (id) url += `icecat_id=${id}&`;
-  if (brand) url += `vendor=${brand}&`;
-  if (mpn) url += `prod_id=${mpn}&`;
-  if (gtin) url += `ean_upc=${gtin}&`;
+  if (userInput.id) url += `icecat_id=${userInput.id}&`;
+  if (userInput.brand) url += `vendor=${userInput.brand}&`;
+  if (userInput.mpn) url += `prod_id=${userInput.mpn}&`;
+  if (userInput.gtin) url += `ean_upc=${userInput.gtin}&`;
+  if (userInput.output) url += `output=${userInput.output}`;
 
-  if (format === "XML") url += `output=${output}`;
-  if (format === "CSV") url += `output=productcsv`;
   return url;
 }
 
@@ -205,24 +152,15 @@ function createJSONview() {
 
 //* JSON only buttons behaviour!
 document.querySelector("#get-json-button").onclick = () => {
-  // Essential information
   let userInput = createUserInput('JSON')
-  // Product Identifiers Wrong Condition
+  
   if ((!userInput.id && !userInput.gtin) && (!userInput.mpn || !userInput.brand)) {
       alert("Please use GTIN, ID or Brand + MPN pair to get the product");
       return;
     }
-  }
-
-  let url = constructJSONLink(
-    inputShopname,
-    inputAppKey,
-    inputIcecatID,
-    inputLang,
-    inputGTIN,
-    inputMPN,
-    inputBrand
-  );
+  
+    
+  let url = constructJSONLink(userInput);
   window.open(url, "_blank");
 };
 
@@ -236,34 +174,32 @@ document.querySelector("#granular-remove-all").onclick = () => {
   for (let checkbox of checkboxesList) checkbox.checked = false;
 };
 
-//* One-to-rule-them-all JSON function.
-// input -> all fields from product form for JSON
+// input -> userInput object
 // Checks all the fields and add input as attributes
-// output -> link to Icecat Live JSOn
+// output -> link to Icecat Live JSON
 function constructJSONLink (input) {
   const DOMAIN = `https://live.icecat.biz/api?`;
 
-  shopname = shopname || "openicecat-live";
-  let url = DOMAIN + `shopname=${shopname}&`;
+  input.shopname = input.shopname || "openicecat-live";
+  let url = DOMAIN + `shopname=${input.shopname}&`;
 
-  if (input.appkey) url += `app_key=${appkey}&`;
-  if (input.id) url += `icecat_id=${icecat_id}&`;
-  if (input.gtin) url += `GTIN=${gtin}&`;
-  if (input.brand) url += `Brand=${brand}&`;
-  if (input.mpn) url += `ProductCode=${mpn}&`;
+  if (input.appkey) url += `app_key=${input.appkey}&`;
+  if (input.id) url += `icecat_id=${input.icecat_id}&`;
+  if (input.gtin) url += `GTIN=${input.gtin}&`;
+  if (input.brand) url += `Brand=${input.brand}&`;
+  if (input.mpn) url += `ProductCode=${input.mpn}&`;
 
-  url += `lang=${input.lang}`;
-
+  url += `lang=${input.language}`;
+  url += "&content="
   console.log("Your link is: " + url);
 
   let granularList = getGranularOptionsList();
+  if (granularList) url+= granularList.toString()
 
-  if (!granularList) return url;
-  return url + "&content=" + granularList.toString();
+  return url
 }
 
 //* to be used inside constructJSON link
-// no input
 // output [selected, granular, checkboxes]
 function getGranularOptionsList() {
   let granularOptionsList = [];
@@ -279,33 +215,20 @@ function getGranularOptionsList() {
   return granularOptionsList;
 }
 
-//* CSV functions
-
+//* CSV FUNCTIONS
 document.querySelector("#get-csv-button").onclick = () => {
-  // Essential information
-  const inputShopname = document.getElementById("input-shopname").value;
-  const inputPassword = document.getElementById("input-password").value;
-  // Product Identifiers
-
-  const inputLang = document.getElementById("input-lang").value;
-  const inputIcecatID = document.getElementById("input-icecat-id").value;
-  const inputBrand = document.getElementById("input-brand").value;
-  const inputMPN = document.getElementById("input-mpn").value;
-  const inputGTIN = document.getElementById("input-gtin").value;
-
-  let url = constructXMLs3Link(
-    inputShopname,
-    inputPassword,
-    inputLang,
-    inputIcecatID,
-    inputBrand,
-    inputMPN,
-    inputGTIN,
-    "productcsv",
-    "CSV"
-  );
+  let userInput = createUserInput('CSV')
+  let url = constructXMLs3Link(userInput);
 
   window.open(url, "_blank");
+};
+
+
+//* COMMON FUNCTIONS
+document.querySelector("#input-clear-all-button").onclick = () => {
+  let inputsList = document.querySelectorAll(".input-form-field");
+  
+  for (let input of inputsList) input.value = "";
 };
 
 //* HELPER FUNCTIONS
@@ -321,16 +244,13 @@ function updateElementClassName(element, newClassName) {
   return element;
 }
 
-//* Common buttons for all views
-document.querySelector("#input-clear-all-button").onclick = () => {
-  let inputsList = document.querySelectorAll(".input-form-field");
-
-  for (let input of inputsList) {
-    // console.log(input)
-    input.value = "";
-  }
-};
-
+/*  CLASS USERINPUT
+  *Universal function to handle three types of requests
+  DEFAULT: shopname, language, id, mpn, brand, gtin
+  XML: + password and output
+  JSON: + app_key
+  CSV: + password and output
+*/ 
 function createUserInput(type) {
   const inputShopname = document.getElementById("input-shopname").value;
   const inputLang = document.getElementById("input-lang").value;
@@ -339,7 +259,7 @@ function createUserInput(type) {
   const inputMPN = document.getElementById("input-mpn").value;
   const inputGTIN = document.getElementById("input-gtin").value;
 
-  userInput = {
+  let userInput = {
     "shopname": inputShopname,
     "language": inputLang,
     "id": inputIcecatID,
@@ -349,8 +269,20 @@ function createUserInput(type) {
   }
 
   if (type === "XML" || type === "CSV") {
-    userInput.password = document.getElementById("input-shopname").value;
+    userInput.password = document.getElementById("input-password").value;
   }
+
+  if (type === "XML") {
+    for (let radioButton of document.getElementsByName("xml-output")) {
+      if (radioButton.checked) userInput.output = radioButton.id;
+    }
+  }
+
+  if (type === "CSV") {
+    userInput.output = 'productcsv'
+  }
+
+
   if (type === "JSON") {
     userInput.appkey = document.getElementById("input-app-key").value;
   }
