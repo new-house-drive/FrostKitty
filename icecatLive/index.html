@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <script src="https://live.icecat.biz/js/live-current-2.js"></script>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <title>Frost Kitty Preview :3</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="IcecatLive"></div>
-    <script type="text/javascript"> 
-        
-        setTimeout(function(){
-            IcecatLive.getDatasheet('#IcecatLive',{
-        'UserName': 'valera-shop',
-        'Brand':'Vorago',
-        'ProductCode':'WC-300'
-    },
-    'fi');}, 200); 
-    </script> 
-</body>
+    <script type="text/javascript">
+      IcecatLive.getDatasheet(
+        "#liveContainer",
+        {
+          UserName: "valera-shop",
+          Brand: "Apple",
+          ProductCode: "MC969RS/A",
+        },
+        "EN"
+      ).then(() => {
+        document.querySelector("div.-header > h2").innerHTML = "My text";
+      });
+    </script>
+  </body>
 </html>
-
