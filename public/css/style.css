@@ -20,8 +20,8 @@ body {
 }
 
 .top-xml-selected {
-    background: rgba(255,0,122,1);
-    background: linear-gradient(67deg, rgba(255,0,122,1) 27%, rgba(89,0,92,1) 100%); 
+    background: rgb(255, 148, 200);
+    background: linear-gradient(67deg, rgb(255, 148, 200) 27%, rgba(89,0,92,1) 100%); 
     color: black;
 }
 
@@ -77,11 +77,11 @@ body {
 }
 /* DEFAULT/XML VIEW */
 #button-board-xml {
-    background: rgba(255,0,122,1);
+    background: rgb(255, 148, 200);
 }
 .button-xml-selected {
-    background: rgba(255,0,122,1);
-    border: 2px solid rgba(255,0,122,1);
+    background: rgb(255, 148, 200);
+    border: 2px solid rgb(255, 148, 200);
     /* border:none; */
     color: black;
 }
