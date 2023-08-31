@@ -209,7 +209,7 @@ function createUserInput(type) {
   const inputGTIN = document.getElementById("input-gtin").value;
 
   let userInput = {
-    shopname: inputShopname,
+    shopname: inputShopname || "openIcecat-live",
     language: inputLang,
     id: inputIcecatID,
     brand: inputBrand,
@@ -266,20 +266,18 @@ function constructLink(type) {
   }
   if (type === "JSON") {
     return function (userInput) {
-      let domain = "https://data.icecat.biz/xml_s3/xml_server3.cgi?";
-      if (userInput.shopname && userInput.password) {
-        domain = `https://${userInput.shopname}:${userInput.password}@data.icecat.biz/xml_s3/xml_server3.cgi?`;
-      }
+      let domain = "https://live.icecat.biz/api?";
 
-      let url = domain + `lang=${userInput.language}&`;
+      let url = domain + 
+        `lang=${userInput.language}&` + 
+        `shopname=${userInput.shopname}&`;
 
-      if (userInput.id) url += `icecat_id=${userInput.id}&`;
-      if (userInput.brand) url += `vendor=${userInput.brand}&`;
-      if (userInput.mpn) url += `prod_id=${userInput.mpn}&`;
-      if (userInput.gtin) url += `ean_upc=${userInput.gtin}&`;
-      if (userInput.output) url += `output=${userInput.output}`;
+      if (userInput.id) url += `Icecat_ID=${userInput.id}&`;
+      if (userInput.brand) url += `Brand=${userInput.brand}&`;
+      if (userInput.mpn) url += `ProductCode=${userInput.mpn}&`;
+      if (userInput.gtin) url += `GTIN=${userInput.gtin}&`;
 
-      return url;
+      return url + "content=" + getGranularOptionsList().toString();
     };
   }
 
