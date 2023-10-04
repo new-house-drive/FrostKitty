@@ -272,10 +272,13 @@ function constructLink(type) {
         `lang=${userInput.language}&` + 
         `shopname=${userInput.shopname}&`;
 
+      if (userInput.appkey) url += `app_key=${userInput.appkey}&`;
+
       if (userInput.id) url += `icecat_id=${userInput.id}&`;
       if (userInput.brand) url += `brand=${userInput.brand}&`;
       if (userInput.mpn) url += `productcode=${userInput.mpn}&`;
       if (userInput.gtin) url += `GTIN=${userInput.gtin}&`;
+
 
       return url + "content=" + getGranularOptionsList().toString();
     };
