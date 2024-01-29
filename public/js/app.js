@@ -279,7 +279,7 @@ function constructLink(type) {
       if (userInput.mpn) url += `ProductCode=${userInput.mpn}&`;
       if (userInput.gtin) url += `GTIN=${userInput.gtin}&`;
 
-      url += 'content=' + getGranularOptionsList().toString
+      url += 'content=' + getGranularOptionsList().toString()
 
       return url;
     };
