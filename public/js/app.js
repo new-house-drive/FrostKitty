@@ -150,6 +150,8 @@ document.querySelector("#granular-remove-all").onclick = () => {
 };
 
 //* to be used inside constructJSON link
+//TODO: separate into external JS along with constructLink!
+//TODO: make it private!
 // output [selected, granular, checkboxes]
 function getGranularOptionsList() {
   let granularOptionsList = [];
@@ -242,6 +244,7 @@ function createUserInput(type) {
 // FACTORY FUNCTION FOR ALL TYPES OF REQUESTS
 // TO CREATE A LINK ON USER UI
 //? Options: XML_s3, XML_by_ID, JSON
+//TODO: Separate into external JS!
 // Can be adlusted as many times as required.
 // No Longer we require to create a new function
 // with a new name every button. 
