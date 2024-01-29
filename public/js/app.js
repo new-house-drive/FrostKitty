@@ -265,19 +265,21 @@ function constructLink(type) {
     };
   }
   if (type === "JSON") {
+    // Brand=Lenovo&=12K9003XLS&content=
     return function (userInput) {
-      let domain = "https://data.icecat.biz/xml_s3/xml_server3.cgi?";
-      if (userInput.shopname && userInput.password) {
-        domain = `https://${userInput.shopname}:${userInput.password}@data.icecat.biz/xml_s3/xml_server3.cgi?`;
-      }
+      let domain = "https://live.icecat.biz/api?";
+      
 
       let url = domain + `lang=${userInput.language}&`;
 
+      if (userInput.shopname) url += 'shopname=' + userInput.shopname + '&';
+      if (userInput.shopname) url += 'app_key=' + userInput.appkey + '&';
       if (userInput.id) url += `icecat_id=${userInput.id}&`;
-      if (userInput.brand) url += `vendor=${userInput.brand}&`;
-      if (userInput.mpn) url += `prod_id=${userInput.mpn}&`;
-      if (userInput.gtin) url += `ean_upc=${userInput.gtin}&`;
-      if (userInput.output) url += `output=${userInput.output}`;
+      if (userInput.brand) url += `Brand=${userInput.brand}&`;
+      if (userInput.mpn) url += `ProductCode=${userInput.mpn}&`;
+      if (userInput.gtin) url += `GTIN=${userInput.gtin}&`;
+
+      url += 'content=' + getGranularOptionsList().toString
 
       return url;
     };
