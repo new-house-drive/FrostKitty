@@ -265,7 +265,7 @@ function constructLink(type) {
     };
   }
   if (type === "JSON") {
-    // Brand=Lenovo&=12K9003XLS&content=
+
     return function (userInput) {
       let domain = "https://live.icecat.biz/api?";
       
