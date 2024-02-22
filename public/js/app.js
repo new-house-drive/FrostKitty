@@ -32,6 +32,7 @@ document.querySelector("#view-CSV-button").onclick = () => {
   for (let div of xmlOnlyDivsList) div.style.display = "none";
 };
 
+//TODO: Leave only JSON view! REWRITE ALL IN REACT!
 //* Behaviour on top-nav XML button clicked.
 // Also default view onload
 function createDefaultXMLview() {
@@ -62,11 +63,18 @@ function createDefaultXMLview() {
 document.querySelector("#get-xml-button").onclick = () => {
   let userInput = createUserInput("XML");
 
+  let { id, gtin, mpn, brand} = userInput
+
+  id = id.trim()
+  gtin = gtin.trim()
+  mpn = mpn.gtin()
+  brand = brand.trim()
+
   // Product Identifiers Wrong Condition
   if (
-    !userInput.id &&
-    !userInput.gtin &&
-    (!userInput.mpn || !userInput.brand)
+    !id ||
+    !gtin ||
+    (!mpn || !brand)
   ) {
     alert("Please use GTIN, ID or Brand + MPN pair to get the product");
     return;
@@ -125,12 +133,21 @@ function createJSONview() {
 //* JSON only buttons behaviour!
 document.querySelector("#get-json-button").onclick = () => {
   let userInput = createUserInput("JSON");
+  let { id, gtin, mpn, brand} = userInput
+
+  id = id.trim()
+  gtin = gtin.trim()
+  mpn = mpn.trim()
+  brand = brand.trim()
 
   if (
-    !userInput.id &&
-    !userInput.gtin &&
-    (!userInput.mpn || !userInput.brand)
+    !id ||
+    !gtin ||
+    (!mpn || !brand)
   ) {
+
+    console.log(id)
+    console.log(!id)
     alert("Please use GTIN, ID or Brand + MPN pair to get the product");
     return;
   }
@@ -203,12 +220,13 @@ function updateElementClassName(element, newClassName) {
   CSV: + password and output
 */
 function createUserInput(type) {
-  const inputShopname = document.getElementById("input-shopname").value;
-  const inputLang = document.getElementById("input-lang").value;
-  const inputIcecatID = document.getElementById("input-icecat-id").value;
-  const inputBrand = document.getElementById("input-brand").value;
-  const inputMPN = document.getElementById("input-mpn").value;
-  const inputGTIN = document.getElementById("input-gtin").value;
+  const inputShopname = document.getElementById("input-shopname").value.trim();
+  const inputLang = document.getElementById("input-lang").value.trim();
+  // TODO: If the value starts with whitespace, the value is empty string
+  const inputIcecatID = document.getElementById("input-icecat-id").value.trim();
+  const inputBrand = document.getElementById("input-brand").value.trim();
+  const inputMPN = document.getElementById("input-mpn").value.trim();
+  const inputGTIN = document.getElementById("input-gtin").value.trim();
 
   let userInput = {
     shopname: inputShopname,
@@ -258,11 +276,11 @@ function constructLink(type) {
 
       let url = domain + `lang=${userInput.language}&`;
 
-      if (userInput.id) url += `icecat_id=${userInput.id}&`;
-      if (userInput.brand) url += `vendor=${userInput.brand}&`;
-      if (userInput.mpn) url += `prod_id=${userInput.mpn}&`;
-      if (userInput.gtin) url += `ean_upc=${userInput.gtin}&`;
-      if (userInput.output) url += `output=${userInput.output}`;
+      if (userInput.id) url += `icecat_id=${userInput.id.trim()}&`;
+      if (userInput.brand) url += `vendor=${userInput.brand.trim()}&`;
+      if (userInput.mpn) url += `prod_id=${userInput.mpn.trim()}&`;
+      if (userInput.gtin) url += `ean_upc=${userInput.gtin.trim()}&`;
+      if (userInput.output) url += `output=${userInput.output.trim()}`;
 
       return url;
     };
